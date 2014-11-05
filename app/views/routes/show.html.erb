@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @route.title %>
+</p>
+
+<p>
+	<%= @route.route_image %>
+	<img src="<%= @route.route_image %>" width ="600">
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @route.description %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
