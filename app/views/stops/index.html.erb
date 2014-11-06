@@ -1,0 +1,29 @@
+<h1>Listing stops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Stop image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stops.each do |stop| %>
+      <tr>
+        <td><%= stop.name %></td>
+        <td><%= stop.description %></td>
+        <td><%= stop.stop_image %></td>
+        <td><%= link_to 'Show', stop %></td>
+        <td><%= link_to 'Edit', edit_stop_path(stop) %></td>
+        <td><%= link_to 'Destroy', stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stop', new_stop_path %>
