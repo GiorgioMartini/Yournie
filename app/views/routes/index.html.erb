@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Route Image</th>
       <th>Description</th>
       <th colspan="3"></th>
     </tr>
@@ -12,6 +13,10 @@
   <tbody>
     <% @routes.each do |route| %>
       <tr>
+       
+  
+
+        <td> <img src="<%= route.route_image_url(:thumb) %>" > </td>
         <td><%= route.title %></td>
         <td><%= route.description %></td>
         <td><%= link_to 'Show', route %></td>
