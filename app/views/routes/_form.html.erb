@@ -23,6 +23,12 @@
     <%= f.label :route_image %><br>
     <%= f.file_field :route_image %>
   </div>
+<%# here is the stop id to add to the route %>
+<div class="field">
+    <%= f.label :stop_id %><br>
+    <%= f.number_field :stop_id %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

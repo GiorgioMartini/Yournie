@@ -10,6 +10,7 @@ class StopsController < ApplicationController
   # GET /stops/1
   # GET /stops/1.json
   def show
+    @stop = Stop.find(params[:id])
   end
 
   # GET /stops/new

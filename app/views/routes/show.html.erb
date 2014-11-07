@@ -14,5 +14,29 @@
   <%= @route.description %>
 </p>
 
+<strong>Stops</strong>
+
+<table>
+        <% @stops.each do |stop| %>
+          <tr>
+
+            <td>
+            	<a href=" <%= stop_path(stop) %> "> <img src="<%= stop.stop_image %>"><a/>
+            </td> 
+            <td> <%= stop.name %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>

@@ -10,7 +10,7 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
   def show
-
+  @stops = Stop.all
   end
 
   # GET /routes/new
@@ -21,6 +21,7 @@ class RoutesController < ApplicationController
   # GET /routes/1/edit
   def edit
   end
+
 
   # POST /routes
   # POST /routes.json
