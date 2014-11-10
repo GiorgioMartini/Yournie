@@ -15,11 +15,13 @@
 </p>
 
 <strong>Stops</strong><br>
-<p>Example Stop</p><br><br>
+
+<% @route.stops.each do |stops| %>
+<img src="<%= stops.stop_image_url(:thumb_300) %>" alt="Stop Image"> 
+<% end %>
+
+<br><br>
 <h2>Add Stops:</h2><br>
-
-
-
 
 <%= form_for(@stop) do |f| %>
   <% if @stop.errors.any? %>
@@ -34,7 +36,6 @@
     </div>
   <% end %>
 
-	
  	<div class="field">
 	    <%= f.label :name %><br>
 	    <%= f.text_field :name %>
@@ -47,7 +48,8 @@
 	    <%= f.label :stop_image %><br>
 	    <%= f.file_field :stop_image %>
 	</div>
-
+	<p>Route id	:</p>
+		<%= text_field_tag :route_id, params[:id] %>
 	<div class="actions">
 	    <%= f.submit %>
 	</div>
