@@ -1,5 +1,7 @@
 class Route < ActiveRecord::Base
-	has_many :stops
+	validates :title, :description,presence:true
+	has_many :waypoints
+	has_many :stops, through: :waypoints	
 	mount_uploader  :route_image, RouteImageUploader
 
 end

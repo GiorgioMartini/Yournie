@@ -14,22 +14,47 @@
   <%= @route.description %>
 </p>
 
-<strong>Stops</strong>
+<strong>Stops</strong><br>
+<p>Example Stop</p><br><br>
+<h2>Add Stops:</h2><br>
 
-<table>
-        <% @stops.each do |stop| %>
-          <tr>
 
-            <td>
-            	<a href=" <%= stop_path(stop) %> "> <img src="<%= stop.stop_image %>"><a/>
-            </td> 
-            <td> <%= stop.name %></td>
-          </tr>
-        <% end %>
-      </table>
+
+
+<%= form_for(@stop) do |f| %>
+  <% if @stop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stop.errors.count, "error") %> prohibited this stop from being saved:</h2>
+
+      <ul>
+      <% @stop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
     </div>
-  </div>
-</div>
+  <% end %>
+
+	
+ 	<div class="field">
+	    <%= f.label :name %><br>
+	    <%= f.text_field :name %>
+ 	</div>
+ 	<div class="field">
+	    <%= f.label :description %><br>
+	    <%= f.text_field :description %>
+ 	</div>
+	<div class="field">
+	    <%= f.label :stop_image %><br>
+	    <%= f.file_field :stop_image %>
+	</div>
+
+	<div class="actions">
+	    <%= f.submit %>
+	</div>
+<% end %> 
+
+
+
 
 
 

@@ -11,12 +11,16 @@ class RoutesController < ApplicationController
   # GET /routes/1.json
   def show
   @stops = Stop.all
+  @stop = Stop.new
+  @routes = Route.all
+  
   end
 
   # GET /routes/new
   def new
     @route = Route.new
   end
+
 
   # GET /routes/1/edit
   def edit
@@ -71,6 +75,6 @@ class RoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params.require(:route).permit(:title, :description, :route_image)
+      params.require(:route).permit(:title, :description, :route_image, :stop_id)
     end
 end
