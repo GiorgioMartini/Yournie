@@ -1,14 +1,21 @@
 
 <div class="row">
-  <div class="small-9 small-centered large-uncentered columns route_img_wrapper">
+  <div class="small-9 small-centered large-centered columns route_img_wrapper">
 
-    <h2>Choose your adventure</h2>
+    <h2>Choose your adventure:</h2>
     <% @routes.each do |route| %>
       <a href=" <%= route_path(route) %> ">
         <img src="<%= route.route_image_url(:thumb) %>" > 
       </a>
-      <br>
+      
       <h3> <%= route.title %> <br> </h3>
+      
+    <div class="row">
+      <div class="small-4 columns">A</div>
+      <div class="small-4 columns">B</div>
+      <div class="small-4 columns">C</div>
+    </div>
+
       <%= route.description %> <br>
       <%= link_to 'Edit', edit_route_path(route) %>
       <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
