@@ -1,32 +1,21 @@
-<h1>Listing routes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Route Image</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="small-9 small-centered large-uncentered columns route_img_wrapper">
 
-  <tbody>
+    <h2>Choose your adventure</h2>
     <% @routes.each do |route| %>
-      <tr>
-       
-  
-
-        <td> <img src="<%= route.route_image_url(:thumb) %>" > </td>
-        <td><%= route.title %></td>
-        <td><%= route.description %></td>
-        <td><%= link_to 'Show', route %></td>
-        <td><%= link_to 'Edit', edit_route_path(route) %></td>
-        <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <a href=" <%= route_path(route) %> ">
+        <img src="<%= route.route_image_url(:thumb) %>" > 
+      </a>
+      <br>
+      <h3> <%= route.title %> <br> </h3>
+      <%= route.description %> <br>
+      <%= link_to 'Edit', edit_route_path(route) %>
+      <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-  </tbody>
-</table>
-
+    <br>
+    <%= link_to 'New Route', new_route_path %>
+  </div>
+</div>
 <br>
 
-<%= link_to 'New Route', new_route_path %>
