@@ -25,14 +25,12 @@
 
 
 
-<br><br>
-<h2>Add Stops:</h2><br>
-
+<br>
+<h2>Create a new stop:</h2><br>
 <%= form_for(@stop) do |f| %>
   <% if @stop.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@stop.errors.count, "error") %> prohibited this stop from being saved:</h2>
-
       <ul>
       <% @stop.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -40,7 +38,6 @@
       </ul>
     </div>
   <% end %>
-
  	<div class="field">
 	    <%= f.label :name %><br>
 	    <%= f.text_field :name %>
@@ -54,10 +51,27 @@
 	    <%= f.file_field :stop_image %>
 	</div>
 	<p>Route id	:</p>
-		<%= number_field_tag  :route_id,  params[:id]    %>
+		<%= hidden_field_tag  :route_id,  params[:id]    %>
 	<div class="actions">
 	    <%= f.submit %>
+	</div>
+<% end %> 
 
+
+
+
+<h2>Add existing stop</h2>
+<%= form_for(@waypoint) do |f| %>
+  
+	<p>choose route	:</p>
+	<div class="field">
+	    <%= f.label :stop_id %><br>
+	    <%= f.number_field :stop_id %>
+ 	</div>
+	<%= f.text_field  :route_id    %>
+	
+	<div class="actions">
+	    <%= f.submit %>
 	</div>
 <% end %> 
 

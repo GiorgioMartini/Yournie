@@ -12,7 +12,7 @@ class RoutesController < ApplicationController
   def show
   @stops = Stop.all
   @stop = Stop.new
-
+  @waypoint = Waypoint.new(route:  @route)
 
   end
 

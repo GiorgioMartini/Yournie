@@ -26,7 +26,6 @@ class StopsController < ApplicationController
   # POST /stops.json
   def create
     @stop = Stop.new(stop_params)
-
    
 
 
