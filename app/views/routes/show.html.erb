@@ -14,11 +14,16 @@
   <%= @route.description %>
 </p>
 
-<strong>Stops</strong><br>
 
+<strong>Stops</strong><br>
 <% @route.stops.each do |stops| %>
 <img src="<%= stops.stop_image_url(:thumb_300) %>" alt="Stop Image"> 
+<p> Stop ID: <%= stops.id %>  </p>
+<p> Stop name :<%= stops.name %>  </p>
+<p> Stop description :<%= stops.description %> </p>
 <% end %>
+
+
 
 <br><br>
 <h2>Add Stops:</h2><br>
@@ -49,9 +54,10 @@
 	    <%= f.file_field :stop_image %>
 	</div>
 	<p>Route id	:</p>
-		<%= text_field_tag :route_id, params[:id] %>
+		<%= number_field_tag  :route_id,  params[:id]    %>
 	<div class="actions">
 	    <%= f.submit %>
+
 	</div>
 <% end %> 
 

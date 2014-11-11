@@ -25,14 +25,16 @@ class StopsController < ApplicationController
   # POST /stops
   # POST /stops.json
   def create
-
     @stop = Stop.new(stop_params)
+
+   
+
 
     respond_to do |format|
       if @stop.save
-        Waypoint.create(route_id: 37, stop_id: @stop.id)
+        Waypoint.create(route_id: params[:route_id] , stop_id: @stop.id)
         format.html { redirect_to @stop, notice: 'Stop was successfully created.' }
-        format.json { render :show, status: :created, location: @stop }
+        format.json { render :show, status: :created, location:@stop }
       else
         format.html { render :new }
         format.json { render json: @stop.errors, status: :unprocessable_entity }

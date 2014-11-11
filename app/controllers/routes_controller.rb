@@ -12,8 +12,8 @@ class RoutesController < ApplicationController
   def show
   @stops = Stop.all
   @stop = Stop.new
-  @routes = Route.all
-  
+
+
   end
 
   # GET /routes/new
