@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"> </script>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
@@ -14,7 +14,7 @@
 		<a href="/routes">
 			<h1 class="logo">Yournie</h1>
 		</a>
-		<h4>Reclaim you City</h4>
+		<h4>Reclaim your City</h4>
 	</div>  
 <body>
     <%= yield %>

@@ -7,16 +7,16 @@
       <a href=" <%= route_path(route) %> ">
         <img src="<%= route.route_image_url(:thumb) %>" > 
       </a>
+    <div class="row route_img_icons">
+      <div class="small-4 columns"> <p>A</p> </div>
+      <div class="small-4 columns"> <p>B</p></div>
+      <div class="small-4 columns"> <p>C</p></div>
+    </div>
       
       <h3> <%= route.title %> <br> </h3>
       
-    <div class="row">
-      <div class="small-4 columns">A</div>
-      <div class="small-4 columns">B</div>
-      <div class="small-4 columns">C</div>
-    </div>
 
-      <%= route.description %> <br>
+      <p><%= route.description %></p>  <br>
       <%= link_to 'Edit', edit_route_path(route) %>
       <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
