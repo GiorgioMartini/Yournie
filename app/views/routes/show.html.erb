@@ -33,7 +33,7 @@
 
 
 
-	
+
 	<div class="row ">
 	<h2>Create a new stop:</h2><br>
 	<%= form_for(@stop) do |f| %>
@@ -59,6 +59,16 @@
 		    <%= f.label :stop_image %><br>
 		    <%= f.file_field :stop_image %>
 		</div>
+
+		<div class="field">
+		    <%= f.label :stop_lat %><br>
+		    <%= f.number_field :stop_lat, :class => 'text_field', :step => 'any' %>
+		</div>
+				<div class="field">
+		    <%= f.label :stop_lat %><br>
+		    <%= f.number_field :stop_lat, :class => 'text_field', :step => 'any' %>
+		</div>
+
 			<%= hidden_field_tag  :route_id,  params[:id]    %>
 		<div class="actions">
 		    <%= f.submit %>

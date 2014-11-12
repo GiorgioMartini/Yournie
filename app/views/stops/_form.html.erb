@@ -19,12 +19,21 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-  
-
 <div class="field">
     <%= f.label :stop_image %><br>
     <%= f.file_field :stop_image %>
   </div>
+
+
+
+    <div class="field">
+        <%= f.label :stop_lat %><br>
+        <%= f.number_field :stop_lat,  :step => 'any'
+    </div>
+        <div class="field">
+        <%= f.label :stop_long %><br>
+        <%= f.number_field :stop_long,  :step => 'any'
+    </div>
 
   <div class="actions">
     <%= f.submit %>

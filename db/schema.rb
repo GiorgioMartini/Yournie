@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107190829) do
+ActiveRecord::Schema.define(version: 20141112153952) do
 
   create_table "routes", force: true do |t|
     t.string   "title"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20141107190829) do
     t.string   "stop_image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "stop_lat"
+    t.float    "stop_long"
   end
 
   create_table "waypoints", force: true do |t|
@@ -38,4 +40,3 @@ ActiveRecord::Schema.define(version: 20141107190829) do
   end
 
 end
-
