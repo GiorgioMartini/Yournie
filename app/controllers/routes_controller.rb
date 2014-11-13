@@ -13,7 +13,7 @@ class RoutesController < ApplicationController
   @stops = Stop.all
   @stop = Stop.new
   @waypoint = Waypoint.new(route:  @route)
-
+    
   end
 
   # GET /routes/new
