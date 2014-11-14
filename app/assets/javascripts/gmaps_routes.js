@@ -26,7 +26,7 @@ var map;
 
 function initialize() {
 		//Create new DirectionsRenderer
-		directionsDisplay = new google.maps.DirectionsRenderer();
+		directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});
 
         var mapOptions = {
           center: { lat:   52.502541, lng:   13.412209},
@@ -56,6 +56,7 @@ function add_marker(myMarker){
 	var marker = new google.maps.Marker({
 	      position: myMarker,
 	      map: map,
+	      icon: '/custom-icon.png'
    
 		});		
 }
@@ -68,7 +69,7 @@ function renderRoute() {
 		
 		var stopLatLongs = makeStopArray(data.stops);
 
- 		//draw_route( stopLatLongs );
+ 		// draw_route( stopLatLongs );
  		drawDirectionRoute( stopLatLongs );
  		drawMarkers(stopLatLongs);
 	});
