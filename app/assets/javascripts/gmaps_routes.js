@@ -7,10 +7,12 @@ var artRouteCoordinates = [
 
 
 
+
+
 function initialize() {
         var mapOptions = {
           center: { lat:   52.502541, lng:   13.412209},
-          zoom: 12,
+          zoom: 14,
           styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}]
                 
 
@@ -19,18 +21,10 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
 
-
-    getStopLatAndAddMarker();
-
-
-
-	draw_route(artRouteCoordinates);
-	// artRouteCoordinates.forEach(add_marker);
-	getAllStops();
+	printAllMarkers();
 }
 
 
-		// function to draw lines
 	function draw_route(listOfMarkers) {
 	var routePath = new google.maps.Polyline({
 		    path: listOfMarkers,
@@ -42,6 +36,34 @@ function initialize() {
 		routePath.setMap(map);
 	}
 
+
+
+
+function makeStopArray(stops) {
+
+	var arrayoflatlongs = stops.map(function(stop){
+		return new google.maps.LatLng(stop.stop_lat,stop.stop_long);
+
+	});
+	return arrayoflatlongs;
+}
+
+
+	function draw_route(listOfMarkers) {
+	var routePath = new google.maps.Polyline({
+		    path: listOfMarkers,
+		    geodesic: true,
+		    strokeColor: '#2cd000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+		  });
+		routePath.setMap(map);
+	}
+
+
+
+
+
 	function add_marker(myMarker){
 		var marker = new google.maps.Marker({
 		      position: myMarker,
@@ -52,41 +74,39 @@ function initialize() {
 
 
 
-	function getAllStops () { 
+
+
+	function printAllMarkers () { 
 		url = window.location.href+'.json';
 		console.log(url);
 		$.get(url, function(data){
-	
+			
 			data.stops.forEach(function(stop){
-
 				stop.stop_lat
 				stop.stop_long	
 
+
+
 				console.log(stop.stop_lat);
 				console.log(stop.stop_long);
-				latlong = new google.maps.LatLng(stop.stop_lat,stop.stop_long);
+
+				var latlong = new google.maps.LatLng(stop.stop_lat,stop.stop_long);
 				add_marker(latlong);
+					
+
+
 			})
+			
+			var stopLatLongs = makeStopArray(data.stops);
+
+	 		draw_route( stopLatLongs );
 
 		});
 	}
 
 
 
-    function getStopLatAndAddMarker(){
-	    $.get('http://localhost:3000/routes/70.json', function(data){
-			console.log(data.stops[4].stop_lat);
-			console.log(data.stops[4].stop_long);
-
-			latlong = new google.maps.LatLng( data.stops[4].stop_lat,
-			data.stops[4].stop_long);
-
-			add_marker(latlong);
-
-		});
-
-
-    }
+   
 
 google.maps.event.addDomListener(window, 'load', initialize);
 	// var routePath = new google.maps.Polyline({
@@ -98,7 +118,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	//   });
 
 
-	// var marker = new google.maps.Marker({
+ // var marker = new google.maps.Marker({
  //      position: artRouteCoordinates[0],
  //      map: map,
  //      title: 'Hello World!'
