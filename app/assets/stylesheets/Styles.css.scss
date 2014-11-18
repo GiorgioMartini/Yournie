@@ -1,3 +1,5 @@
+@import "foundation_and_overrides";
+
 @font-face {
 font-family: 'ChunkFive-Roman';
 font-style: normal;
@@ -6,17 +8,28 @@ src: local('ChunkFive-Roman'),
 url('/chunkfive/Chunkfive.woff') format('woff');
 }
 
+
+
 .top_wrapper{
 	
 	.logo{
+		@media #{$small-only} {
+		font-size:2em;
+		}
 		font-family: 'ChunkFive-Roman', 'serif';
-		font-size:6em;
+		font-size:4em;
 		text-align: center;
 	}
-	h4{
-
+	.slogan{
+	font-size:0.8em;
+	margin: 0 auto;
+	display:block;
 	text-align: center;
-	margin-top: -1.9em;		}
+	margin-top: -2.3em;
+		@media #{$small-only} {
+			font-size:0.6em;
+		}
+	}
 
 }
 
@@ -29,7 +42,12 @@ url('/chunkfive/Chunkfive.woff') format('woff');
 	margin-top: 3em;
 	}
 	h2{
-	margin-bottom: -0.5em;
+		margin: 0.4em 0 -1em 0;
+		text-align: center;
+		@media #{$small-only} {
+			margin: 0.4em 0 -2em 0;
+			font-size: 1.1em;
+		}
 	}
 	
 }
@@ -38,6 +56,7 @@ url('/chunkfive/Chunkfive.woff') format('woff');
 	text-align: center;
 	
 }
+
 
 
 /*
