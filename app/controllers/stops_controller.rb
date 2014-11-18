@@ -28,10 +28,14 @@ class StopsController < ApplicationController
     @stop = Stop.new(stop_params)
    
 
-
+    
     respond_to do |format|
       if @stop.save
         Waypoint.create(route_id: params[:route_id] , stop_id: @stop.id)
+        #print out category id or name here
+        category = params[:category]
+        #once printed save it (stop category)
+        StopCategory.create(category_id: category, stop_id:  @stop.id)
         format.html { redirect_to @stop, notice: 'Stop was successfully created.' }
         format.json { render :show, status: :created, location:@stop }
       else
