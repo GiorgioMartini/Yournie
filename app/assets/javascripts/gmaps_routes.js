@@ -53,12 +53,17 @@ function initialize() {
 */
 
 function add_marker(myMarker){
+	var categoryUrl = "/icons/"+ myMarker.categories[0]+".png";
+	
+	var stopPosition = new google.maps.LatLng( myMarker.stop_lat,  myMarker.stop_long);
+
 	var marker = new google.maps.Marker({
-	      position: myMarker,
+	      position: stopPosition,
 	      map: map,
-	      icon: '/custom-icon.png'
+	      icon: categoryUrl
    
-		});		
+		});	
+	console.log(categoryUrl);
 }
 
 
@@ -71,9 +76,8 @@ function renderRoute() {
 
  		// draw_route( stopLatLongs );
  		drawDirectionRoute( stopLatLongs );
- 		drawMarkers(stopLatLongs);
-// 		drawMarkers(data.stops[0].stop_lat, data.stops.stop_long);
-
+// 		drawMarkers(stopLatLongs);
+ 		drawMarkers( data.stops );
 	});
 }
 
@@ -82,9 +86,7 @@ function renderRoute() {
 function drawMarkers(stopData) {
 	stopData.forEach(function(stop){	
 			add_marker(stop);
-				
 		})
-		
 }
 
 
@@ -119,7 +121,7 @@ function drawDirectionRoute (markers) {
     travelMode: google.maps.TravelMode.WALKING
 	
 	}
-	console.log(request) 
+	
 	directionsService.route(request, function(response, status) {
 	    if (status == google.maps.DirectionsStatus.OK) {
 	      directionsDisplay.setDirections(response);
