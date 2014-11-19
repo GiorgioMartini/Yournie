@@ -5,7 +5,10 @@
     <h2>Choose your adventure:</h2>
     <% @routes.each do |route| %>
       <a href=" <%= route_path(route) %> ">
-        <img src="<%= route.route_image_url(:thumb) %>" > 
+      <div class="route_img">    
+      <img src="<%= route.route_image_url(:thumb) %>" >       
+      <h3 class="route_title"> <%= route.title %></h3><br>
+    </div>
       </a>
     <div class="row route_img_icons">
       <div class="small-4 columns"> <p>A</p> </div>
@@ -13,7 +16,6 @@
       <div class="small-4 columns"> <p>C</p></div>
     </div>
       
-      <h3> <%= route.title %> <br> </h3>
       
 
       <p><%= route.description %></p>  <br>
@@ -26,3 +28,4 @@
 </div>
 <br>
 
+83r!388

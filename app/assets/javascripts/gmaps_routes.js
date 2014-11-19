@@ -72,13 +72,14 @@ function renderRoute() {
  		// draw_route( stopLatLongs );
  		drawDirectionRoute( stopLatLongs );
  		drawMarkers(stopLatLongs);
+// 		drawMarkers(data.stops[0].stop_lat, data.stops.stop_long);
+
 	});
 }
 
 
-
+// For each stopData apply the function addMarker
 function drawMarkers(stopData) {
-	console.log(stopData);
 	stopData.forEach(function(stop){	
 			add_marker(stop);
 				
