@@ -63,7 +63,7 @@ function add_marker(myMarker){
 	      icon: categoryUrl
    
 		});	
-	console.log(categoryUrl);
+		console.log(categoryUrl);
 }
 
 

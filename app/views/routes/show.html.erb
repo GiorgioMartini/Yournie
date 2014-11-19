@@ -2,8 +2,8 @@
 
 
 
-
 <div class="small-9 small-centered large-centered columns route_img_wrapper">
+
 		<%-# comment -%>
 		<% if false %>
 			<div class="row ">
@@ -13,11 +13,10 @@
 					<%= @route.description %>
 			</div>
 		<% end %>
-
+		<%-# comment -%>
 
 		<h4>These are the spots you'll discover in this yournie:</h4>
 		<% @route.stops.each do |stops| %>
-
 		<div class="row ">
 			<img src="<%= stops.stop_image_url(:thumb_300) %>" alt="Stop Image"> 
 			<p> 
