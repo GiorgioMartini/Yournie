@@ -5,16 +5,18 @@
 <h2>Wanna discover these spots?</h2>
 
 <ul id="stops-carousel" data-orbit>
-  <% @route.stops.each do |stops| %>
+  <% @route.stops.each do |stop| %>
   <li>
-    <img src="<%= stops.stop_image_url(:thumb_300) %>" alt="<%= stops.name %>" />
+    <img src="<%= stop.stop_image_url(:thumb_300) %>" alt="<%= stop.name %>" />
     <div class="orbit-caption">
-		<%= stops.name %>
-  <%= link_to 'Delete Stop', stops, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= stop.name %>
+  <%= link_to 'Delete Stop', stop, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   </li>
   <% end %>
 </ul>
+
+
 
 
 		<%-# comment -%>
