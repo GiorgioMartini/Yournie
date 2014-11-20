@@ -5,6 +5,7 @@ json.stops @route.stops do |stop|
 	json.description    stop.description
 	json.stop_lat       stop.stop_lat
 	json.stop_long      stop.stop_long
+	json.id             stop.id
 
 
 	json.categories stop.categories.map{|c|c.name} 

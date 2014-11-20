@@ -16,7 +16,7 @@
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
-
+var markerArray = [];
 
 /*
 ***********************
@@ -57,13 +57,17 @@ function add_marker(myMarker){
 	
 	var stopPosition = new google.maps.LatLng( myMarker.stop_lat,  myMarker.stop_long);
 
-	var marker = new google.maps.Marker({
+
+	 marker = new google.maps.Marker({
 	      position: stopPosition,
 	      map: map,
 	      icon: categoryUrl
    
 		});	
-		console.log(categoryUrl);
+
+	 
+	 markerArray.push(marker);
+		
 }
 
 
@@ -140,14 +144,6 @@ function createWaypoints(stops){
 		});
 }
 
-
-/*
-***********************
-*=Direction Functions
-***********************
-*/
-
-
 google.maps.event.addDomListener(window, 'load', initialize);
 	// var routePath = new google.maps.Polyline({
 	//     path: artRouteCoordinates,
@@ -158,13 +154,33 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	//   });
 
 
- // var marker = new google.maps.Marker({
- //      position: artRouteCoordinates[0],
- //      map: map,
- //      title: 'Hello World!'
- //  });
+	 // var marker = new google.maps.Marker({
+	 //      position: artRouteCoordinates[0],
+	 //      map: map,
+	 //      title: 'Hello World!'
+	 //  });
+
+// Carousel event for Gmaps
+
+$("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
+  //console.info(event);
+  //$('.stop_img_wrapper h2').html('woooohooo');
+
+  	//console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
+
 
 	
+
+ var stopPos = markerArray[orbit.slide_number].getPosition()
+	
+	console.log(stopPos);
+	//add_marker(stopPos);
+  
+  //Print out the lat of each marker depending which slide/stop is shown
+  //console.log('The stop number'+orbit.slide_number+'has a lat of: '+markerArray[orbit.slide_number].getPosition().lat());
+  // center on each marker depending which slide/stop is shown
+  //map.setCenter(markerArray[orbit.slide_number].getPosition());
+});	
 
 
 

@@ -1,24 +1,24 @@
+<div class="small-12 small-centered large-centered columns stop_img_wrapper">
 <p id="notice"><%= notice %></p>
 
 
+<h2>Wanna discover these spots?</h2>
 
-<div class="small-9 small-centered large-centered columns route_img_wrapper">
+<ul id="stops-carousel" data-orbit>
+  <% @route.stops.each do |stops| %>
+  <li>
+    <img src="<%= stops.stop_image_url(:thumb_300) %>" alt="<%= stops.name %>" />
+    <div class="orbit-caption">
+		<%= stops.name %>
+  <%= link_to 'Delete Stop', stops, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </li>
+  <% end %>
+</ul>
+
 
 		<%-# comment -%>
-		<% if false %>
-			<div class="row ">
-				<h3><%= @route.title %></h3>
-					<img src="<%= @route.route_image_url(:thumb) %>" >
-					<strong>Description:</strong>
-					<%= @route.description %>
-			</div>
-		<% end %>
-		<%-# comment -%>
-
-		<h4>These are the spots you'll discover in this yournie:</h4>
-		<% @route.stops.each do |stops| %>
-		<div class="row ">
-			<img src="<%= stops.stop_image_url(:thumb_300) %>" alt="Stop Image"> 
+		<% if false %>			
 			<p> 
 				Category: 
 				<% stops.categories.each do |category| %>
@@ -30,14 +30,12 @@
 			<p> Stop description :<%= stops.description %> </p>
 			<p> Stop lat :<%= stops.stop_lat %>  </p>
 			<p> Stop long:<%= stops.stop_long %>  </p>
-
-		</div>
-		<% end %> 		
-	<br>
+		<% end %>
+		<%-# comment -%>
 
 
 
-<h3>This is the route:</h3>
+<h2>This is the route:</h2>
 <div id="map-canvas"></div>
 
 
