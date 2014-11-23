@@ -2,30 +2,31 @@
 <div class="row">
   <div class="small-12 small-centered large-centered columns route_img_wrapper">
 
-    <h2>Choose your adventure:</h2>
     <% @routes.each do |route| %>
       <a href=" <%= route_path(route) %> ">
-      <div class="route_img">    
-      <img src="<%= route.route_image_url(:thumb) %>" >       
-      <h3 class="route_title"> <%= route.title %></h3><br>
-    </div>
+        <div class="route_img">    
+          <img src="<%= route.route_image_url(:thumb) %>" >       
+          <h3 class="route_title"> <%= route.title %></h3>
+        </div>
       </a>
-    <div class="row route_img_icons">
-      <div class="small-4 columns"> <p>A</p> </div>
-      <div class="small-4 columns"> <p>B</p></div>
-      <div class="small-4 columns"> <p>C</p></div>
+    
+    <div class="route_img_icons">
+      <div class="small-4 columns"> A </div>
+      <div class="small-4 columns"> B </div>
+      <div class="small-4 columns"> C </div>
     </div>
-      
-      
-
       <p><%= route.description %></p>  <br>
-      <%= link_to 'Edit', edit_route_path(route) %>
-      <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+      
+        <%-# comment -%>
+          <% if false %>      
+            <%= link_to 'Edit', edit_route_path(route) %>
+            <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <%-# comment -%>
+
     <% end %>
-    <br>
     <%= link_to 'New Route', new_route_path %>
   </div>
 </div>
 <br>
 
-83r!388

@@ -54,7 +54,6 @@ function initialize() {
 
 function add_marker(myMarker){
 	var categoryUrl = "/icons/"+ myMarker.categories[0]+".png";
-	console.log(categoryUrl);
 	var stopPosition = new google.maps.LatLng( myMarker.stop_lat,  myMarker.stop_long);
 
 
@@ -167,26 +166,21 @@ $("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit)
 
   	//console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
 
-
 	
 
  var stopPos = markerArray[orbit.slide_number].getPosition()
 		console.log(marker);
+		console.log(stopPos);
 	marker = new google.maps.Marker({
 		      position: stopPos,
 		      map: map
 		      // todo: zIndex: 100
 		      //icon: categoryUrl
-		
 			});	
-
-	console.log(stopPos);
-
-
-
-
-	//add_marker(stopPos);
-  
+ //google marker remove y marker set position de gmaps
+function clearMarkers() {
+  setAllMap(null);
+}  //add_marker(stopPos);
   //Print out the lat of each marker depending which slide/stop is shown
   //console.log('The stop number'+orbit.slide_number+'has a lat of: '+markerArray[orbit.slide_number].getPosition().lat());
   // center on each marker depending which slide/stop is shown
