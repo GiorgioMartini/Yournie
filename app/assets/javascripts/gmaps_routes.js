@@ -17,6 +17,7 @@ var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
 var markerArray = [];
+var highlightMarker;
 
 /*
 ***********************
@@ -36,14 +37,17 @@ function initialize() {
 
         };
     // Create new Map in the map-canvas ID
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
+   
 
 	renderRoute();
 
 	// Directions Display
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   directionsDisplay.setMap(map);
+
+
+
+
 }
 
 /*
@@ -57,7 +61,7 @@ function add_marker(myMarker){
 	var stopPosition = new google.maps.LatLng( myMarker.stop_lat,  myMarker.stop_long);
 
 
-	 marker = new google.maps.Marker({
+	 var marker = new google.maps.Marker({
 	      position: stopPosition,
 	      map: map,
 	      icon: categoryUrl
@@ -80,6 +84,17 @@ function renderRoute() {
  		drawDirectionRoute( stopLatLongs );
 // 		drawMarkers(stopLatLongs);
  		drawMarkers( data.stops );
+
+ 		var FirstStopPos = markerArray[0].getPosition();
+
+		highlightMarker = new google.maps.Marker({
+				      position: FirstStopPos,
+				      map: map
+				      // todo: zIndex: 100
+				      //icon: categoryUrl
+					});	
+
+
 	});
 }
 
@@ -158,34 +173,30 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	 //      title: 'Hello World!'
 	 //  });
 
+
+
+
 // Carousel event for Gmaps
-
 $("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
-  //console.info(event);
-  //$('.stop_img_wrapper h2').html('woooohooo');
-
-  	//console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
+  
+var stopPos = markerArray[orbit.slide_number].getPosition();
+	
+	if (highlightMarker){
+	highlightMarker.setMap(null);		
+	};
 
 	
-
- var stopPos = markerArray[orbit.slide_number].getPosition()
-		console.log(marker);
-		console.log(stopPos);
-	marker = new google.maps.Marker({
+	highlightMarker = new google.maps.Marker({
 		      position: stopPos,
 		      map: map
 		      // todo: zIndex: 100
 		      //icon: categoryUrl
 			});	
- //google marker remove y marker set position de gmaps
-function clearMarkers() {
-  setAllMap(null);
-}  //add_marker(stopPos);
-  //Print out the lat of each marker depending which slide/stop is shown
-  //console.log('The stop number'+orbit.slide_number+'has a lat of: '+markerArray[orbit.slide_number].getPosition().lat());
-  // center on each marker depending which slide/stop is shown
-  //map.setCenter(markerArray[orbit.slide_number].getPosition());
-});	
+
+});
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 class Stop < ActiveRecord::Base
+	validates :description, length: { maximum: 155 }
 	#Image Uploader
 	mount_uploader  :stop_image, StopImageUploader
 	

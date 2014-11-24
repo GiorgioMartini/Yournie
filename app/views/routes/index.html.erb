@@ -17,9 +17,9 @@
     </div>
       <p><%= route.description %></p>  <br>
       
+            <%= link_to 'Edit', edit_route_path(route) %>
         <%-# comment -%>
           <% if false %>      
-            <%= link_to 'Edit', edit_route_path(route) %>
             <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         <%-# comment -%>
