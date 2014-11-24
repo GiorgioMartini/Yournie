@@ -17,17 +17,17 @@ body{
 }
 
 
-.top_wrapper{
 
-	h1.logo{
-		color: $primary-color;
-		font-size:2em;
-		font-family: 'ChunkFive-Roman', 'serif';
-		font-size:1.5em;
-		text-align: center;
-		margin: 0.3em 0 0.5em 0;
-	}
+
+h1.logo{
+	color: $primary-color;
+	font-size:2em;
+	font-family: 'ChunkFive-Roman', 'serif';
+	font-size:1.5em;
+	text-align: center;
+	margin: 0.3em 0 0.5em 0;
 }
+
 
 
 
@@ -86,12 +86,6 @@ body{
 	position: relative; 
     width: 100%; /* for IE 6 */
 }
-
-.route_title{
-	
-	
-}
-
 
 
 .route_img_icons{

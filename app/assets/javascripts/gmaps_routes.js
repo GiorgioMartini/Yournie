@@ -36,17 +36,13 @@ function initialize() {
                 
 
         };
-    // Create new Map in the map-canvas ID
    
-
-	renderRoute();
-
-	// Directions Display
+    // Create new Map in the map-canvas ID
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	// Directions Display
   directionsDisplay.setMap(map);
 
-
-
+	renderRoute();
 
 }
 
@@ -92,7 +88,9 @@ function renderRoute() {
 				      map: map
 				      // todo: zIndex: 100
 				      //icon: categoryUrl
-					});	
+					});
+		highlightMarker.setAnimation(google.maps.Animation.BOUNCE);
+	
 
 
 	});
@@ -178,20 +176,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 // Carousel event for Gmaps
 $("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
-  
+
 var stopPos = markerArray[orbit.slide_number].getPosition();
 	
 	if (highlightMarker){
 	highlightMarker.setMap(null);		
 	};
 
-	
 	highlightMarker = new google.maps.Marker({
-		      position: stopPos,
-		      map: map
-		      // todo: zIndex: 100
-		      //icon: categoryUrl
-			});	
+	      position: stopPos,
+	      map: map
+	      // todo: zIndex: 100
+	      //icon: categoryUrl
+	});
+
+highlightMarker.setAnimation(google.maps.Animation.BOUNCE);
 
 });
 

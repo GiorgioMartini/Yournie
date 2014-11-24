@@ -10,13 +10,10 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-	<div class="top_wrapper">
-		<a href="/routes">
-			<h1 class="logo">Yournie</h1>
-		</a>
-	</div>  
+
 <body>
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-  </body>
+  <%= render "/layouts/header" %> 
+  <%= yield %>
+  <%= javascript_include_tag "application" %>
+</body>
 </html>
