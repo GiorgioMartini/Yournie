@@ -32,6 +32,7 @@ function initialize() {
         var mapOptions = {
           center: { lat:   52.502541, lng:   13.412209},
           zoom: 14,
+          disableDefaultUI: true,
           styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}]
                 
 
@@ -176,8 +177,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 // Carousel event for Gmaps
 $("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
+drawHighlightMarker(orbit.slide_number);
+printDescription(orbit.slide_number);
+});
 
-var stopPos = markerArray[orbit.slide_number].getPosition();
+
+function drawHighlightMarker (markerNumber) {
+var stopPos = markerArray[markerNumber].getPosition();
 	
 	if (highlightMarker){
 	highlightMarker.setMap(null);		
@@ -191,10 +197,16 @@ var stopPos = markerArray[orbit.slide_number].getPosition();
 	});
 
 highlightMarker.setAnimation(google.maps.Animation.BOUNCE);
+}
 
-});
 
+function printDescription (slideNumber) {
+	var hiddenDescArray = $(".hiddenDescriptions");
+	console.log(hiddenDescArray[slideNumber]);
+var descriptionHtml = hiddenDescArray[slideNumber].innerHTML;
+	$(".show-description").html(descriptionHtml);
 
+}
 
 
 
