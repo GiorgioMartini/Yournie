@@ -29,8 +29,15 @@ h1.logo{
 }
 
 
+/*
+***********************
+*=Routes
+***********************
+*/
 
-
+.route-item-wrapper{
+border:solid 1px #3C4254;
+}
 
 .route_img_wrapper{
 
@@ -92,7 +99,6 @@ h1.logo{
 	text-align: center;
 	height: 1.6em;
 		border: solid 1px $secondary-color;
-
 }
 
 
@@ -106,9 +112,10 @@ h1.logo{
 #map-canvas{
 	width: 100%;
 	height: 8em;
-		
-	
-		
+	// check HARD CODED COLORS HERE !!!
+	border-bottom: solid 1px #fff;
+	border-top: solid 1px #9E9E9E;
+
 		img{
 			max-width: inherit;
 		}
@@ -119,42 +126,6 @@ h1.logo{
 }
 
 
-
-/*
-***********************
-*=foundation slider
-***********************
-*/
-
-.orbit-bullets {
-margin: 0 auto 0 auto;
-top :0;
-}
-
-.orbit-bullets-container {
-text-align: center;
-display: block;
-margin: 0 auto;
-position: absolute;
-bottom: 1em;
-left: 0;
-right: 0;
-
-}
-
-.orbit-container .orbit-slide-number {
-	display: none;
-}
-
-.orbit-container  {
-border-bottom: solid 1px #fff;
-}
-
-
-.touch .orbit-bullets {
-display: block;
-}
-
 .description{
 	p{
 	padding: 0.3em 1em 0 1em;
@@ -163,4 +134,56 @@ display: block;
 
 	}
 }
+
+/*
+***********************
+*=foundation slider
+***********************
+*/
+
+
+
+.touch .orbit-container .orbit-prev,
+.touch .orbit-container .orbit-next {
+display: inherit;
+}
+
+.orbit-bullets {
+margin: 0 auto 0 auto;
+top :0;
+}
+
+.orbit-bullets-container {
+text-align: center;
+display: none; // antes era block
+margin: 0 auto;
+position: absolute;
+bottom: 1em;
+left: 0;
+right: 0;
+}
+
+.orbit-container .orbit-slide-number {
+	display: none;
+}
+
+.orbit-container .orbit-slides-container img {
+border-bottom: solid 1px #fff;
+}
+
+.touch .orbit-bullets {
+display: block;
+}
+
+.orbit-container 
+.orbit-slides-container > * .orbit-caption {
+color: #fff;
+font-size: 1.2rem;
+text-align: center;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+letter-spacing: -1px;
+line-height: 1.1em;
+}
+
+
 
