@@ -5,7 +5,6 @@
 <% end %>
 
 
-
 <ul id="stops-carousel" data-orbit>
   <% @route.stops.each do |stop| %>
   <li>
@@ -44,7 +43,7 @@
 		<%-# comment -%>
 
 
-
+<% if current_user.admin? %>
 
 
 
@@ -121,6 +120,8 @@
 	</div>
 </div>
 
+
+<% end %>
 
 
 
