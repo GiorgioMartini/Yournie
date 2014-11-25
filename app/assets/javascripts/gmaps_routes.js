@@ -6,12 +6,10 @@
 //   ];
 /*
 
-
 ***********************
-*=Variables
+*=Global Vars
 ***********************
 */
-
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -30,20 +28,15 @@ function initialize() {
 		directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});
 
         var mapOptions = {
-          center: { lat:   52.502541, lng:   13.412209},
-          zoom: 14,
+          zoom: 8,
           disableDefaultUI: true,
           styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}]
-                
-
         };
-   
     // Create new Map in the map-canvas ID
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	// Directions Display
-  directionsDisplay.setMap(map);
-
-renderRoute();
+  	directionsDisplay.setMap(map);
+	renderRoute();
 }
 
 /*
@@ -73,15 +66,21 @@ function renderRoute() {
 	url = window.location.href+'.json';
 	$.get(url, function(data){
 		
-		var stopLatLongs = makeStopArray(data.stops);
+		  stopLatLongs = makeStopArray(data.stops);
  		// draw_route( stopLatLongs );
  		drawDirectionRoute( stopLatLongs );
 		//drawMarkers(stopLatLongs);
  		drawMarkers( data.stops );
  		drawHighlightMarker(0);
 		printDescription(0);
+
 	});
+
 }
+
+
+
+
 
 
 // For each stopData apply the function addMarker
@@ -114,8 +113,18 @@ function drawDirectionRoute (markers) {
 	directionsService.route(request, function(response, status) {
 	    if (status == google.maps.DirectionsStatus.OK) {
 	      directionsDisplay.setDirections(response);
+
+	     google.maps.event.addListenerOnce(map, 'idle', function(){
+
+		mapZoom = map.getZoom();
+		mapZoom = mapZoom+2;
+		map.setZoom(mapZoom); 
+
+		});
+
 	    }
 	})      
+
 }
 
 function createWaypoints(stops){
@@ -128,6 +137,9 @@ function createWaypoints(stops){
 
 		});
 }
+
+
+
 
 
 
@@ -144,7 +156,6 @@ var stopPos = markerArray[markerNumber].getPosition();
 	      // todo: zIndex: 100
 	      //icon: categoryUrl
 	});
-
 	highlightMarker.setAnimation(google.maps.Animation.BOUNCE);
 }
 
@@ -153,16 +164,19 @@ function printDescription (slideNumber){
 	var hiddenDescArray = $(".hiddenDescriptions");
 	var descriptionHtml = hiddenDescArray[slideNumber].innerHTML;
 	$(".show-description").html(descriptionHtml);
-
 }
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
 // Carousel event for Gmaps
 $("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
 drawHighlightMarker(orbit.slide_number);
 printDescription(orbit.slide_number);
 });
+
+
 
 
 
