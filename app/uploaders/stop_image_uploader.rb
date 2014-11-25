@@ -35,8 +35,8 @@ class StopImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
-    version :thumb_300 do
-      process :resize_to_fit => [300, 300]
+    version :thumb_600 do
+      process :resize_to_fit => [600, 600]
     end
 
   # Add a white list of extensions which are allowed to be uploaded.

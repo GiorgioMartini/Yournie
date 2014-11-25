@@ -1,6 +1,6 @@
 
 <div class="row">
-  <div class="small-12  route_img_wrapper">
+  <div class="small-12 route_img_wrapper">
 
     <% @routes.each do |route| %>
       <a href=" <%= route_path(route) %> ">
@@ -17,15 +17,17 @@
     </div>
       <p><%= route.description %></p>  <br>
       
-            <%= link_to 'Edit', edit_route_path(route) %>
+      <%= link_to 'Edit', edit_route_path(route) %>
+        
         <%-# comment -%>
           <% if false %>      
             <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         <%-# comment -%>
-
     <% end %>
+
     <%= link_to 'New Route', new_route_path %>
+  
   </div>
 </div>
 <br>

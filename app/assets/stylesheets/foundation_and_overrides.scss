@@ -882,6 +882,8 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // We use these to control the caption styles
 // $orbit-container-bg: none;
 // $orbit-caption-bg: rgba(51,51,51, 0.8);
+   $orbit-caption-bg: rgba(51,51,51, 0);
+
 // $orbit-caption-font-color: $white;
 // $orbit-caption-font-size: rem-calc(14);
 // $orbit-caption-position: "bottom"; // Supported values: "bottom", "under"
@@ -1369,6 +1371,7 @@ $orbit-bullet-hide-for-small: false;
 // Background color for the top bar
 // $topbar-bg-color: $oil;
 // $topbar-bg: $topbar-bg-color;
+ $topbar-bg: $yournie-bg-color;
 
 // Height and margin
 // $topbar-height: 45px;

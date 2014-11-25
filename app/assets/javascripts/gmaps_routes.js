@@ -43,8 +43,7 @@ function initialize() {
 	// Directions Display
   directionsDisplay.setMap(map);
 
-	renderRoute();
-
+renderRoute();
 }
 
 /*
@@ -74,26 +73,13 @@ function renderRoute() {
 	url = window.location.href+'.json';
 	$.get(url, function(data){
 		
-		
 		var stopLatLongs = makeStopArray(data.stops);
-
  		// draw_route( stopLatLongs );
  		drawDirectionRoute( stopLatLongs );
-// 		drawMarkers(stopLatLongs);
+		//drawMarkers(stopLatLongs);
  		drawMarkers( data.stops );
-
- 		var FirstStopPos = markerArray[0].getPosition();
-
-		highlightMarker = new google.maps.Marker({
-				      position: FirstStopPos,
-				      map: map
-				      // todo: zIndex: 100
-				      //icon: categoryUrl
-					});
-		highlightMarker.setAnimation(google.maps.Animation.BOUNCE);
-	
-
-
+ 		drawHighlightMarker(0);
+		printDescription(0);
 	});
 }
 
@@ -107,25 +93,12 @@ function drawMarkers(stopData) {
 
 
 function makeStopArray(stops) {
-
 	var arrayoflatlongs = stops.map(function(stop){
 		return new google.maps.LatLng(stop.stop_lat,stop.stop_long);
 
 	});
 	return arrayoflatlongs;
 }
-
-
-// function draw_route(listOfMarkers) {
-// var routePath = new google.maps.Polyline({
-// 	    path: listOfMarkers,
-// 	    geodesic: true,
-// 	    strokeColor: '#2cd000',
-// 	    strokeOpacity: 1.0,
-// 	    strokeWeight: 2
-// 	  });
-// 	routePath.setMap(map);
-// }
 
 
 function drawDirectionRoute (markers) {
@@ -156,30 +129,6 @@ function createWaypoints(stops){
 		});
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
-	// var routePath = new google.maps.Polyline({
-	//     path: artRouteCoordinates,
-	//     geodesic: true,
-	//     strokeColor: '#2cd000',
-	//     strokeOpacity: 1.0,
-	//     strokeWeight: 2
-	//   });
-
-
-	 // var marker = new google.maps.Marker({
-	 //      position: artRouteCoordinates[0],
-	 //      map: map,
-	 //      title: 'Hello World!'
-	 //  });
-
-
-
-
-// Carousel event for Gmaps
-$("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
-drawHighlightMarker(orbit.slide_number);
-printDescription(orbit.slide_number);
-});
 
 
 function drawHighlightMarker (markerNumber) {
@@ -196,18 +145,24 @@ var stopPos = markerArray[markerNumber].getPosition();
 	      //icon: categoryUrl
 	});
 
-highlightMarker.setAnimation(google.maps.Animation.BOUNCE);
+	highlightMarker.setAnimation(google.maps.Animation.BOUNCE);
 }
 
 
-function printDescription (slideNumber) {
+function printDescription (slideNumber){
 	var hiddenDescArray = $(".hiddenDescriptions");
-	console.log(hiddenDescArray[slideNumber]);
-var descriptionHtml = hiddenDescArray[slideNumber].innerHTML;
+	var descriptionHtml = hiddenDescArray[slideNumber].innerHTML;
 	$(".show-description").html(descriptionHtml);
 
 }
 
+
+google.maps.event.addDomListener(window, 'load', initialize);
+// Carousel event for Gmaps
+$("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
+drawHighlightMarker(orbit.slide_number);
+printDescription(orbit.slide_number);
+});
 
 
 

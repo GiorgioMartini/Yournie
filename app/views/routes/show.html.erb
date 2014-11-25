@@ -9,23 +9,25 @@
 <ul id="stops-carousel" data-orbit>
   <% @route.stops.each do |stop| %>
   <li>
-    <img src="<%= stop.stop_image_url(:thumb_300) %>" alt="<%= stop.name %>" />
+    <img src="<%= stop.stop_image_url(:thumb_600) %>" alt="<%= stop.name %>" />
     <div class="orbit-caption">
 		<%= stop.name %>
-		<%= stop.description %>	
-
 	<div class="hiddenDescriptions">
 		<%= stop.description %>	
 	</div>
     </div>
   </li>
+
   <% end %>
 </ul>
-
-<span class="show-description"></span>
+<div id="map-canvas"></div>
+	<div class="description">
+		<p class="show-description"></p>
+	</div>
 
 		<%-# comment -%>
 		<% if false %>			
+          <%= link_to 'Edit', edit_stop_path(stop) %>
 		  <%= link_to 'Delete Stop', stop, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<p> 
 				Category: 
@@ -41,7 +43,6 @@
 		<% end %>
 		<%-# comment -%>
 
-<div id="map-canvas"></div>
 
 
 

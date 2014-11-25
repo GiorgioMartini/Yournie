@@ -119,6 +119,7 @@ h1.logo{
 }
 
 
+
 /*
 ***********************
 *=foundation slider
@@ -126,15 +127,40 @@ h1.logo{
 */
 
 .orbit-bullets {
-  top: -2.2em;
+margin: 0 auto 0 auto;
+top :0;
+}
+
+.orbit-bullets-container {
+text-align: center;
+display: block;
+margin: 0 auto;
+position: absolute;
+bottom: 1em;
+left: 0;
+right: 0;
+
 }
 
 .orbit-container .orbit-slide-number {
 	display: none;
-
 }
+
+.orbit-container  {
+border-bottom: solid 1px #fff;
+}
+
 
 .touch .orbit-bullets {
 display: block;
+}
+
+.description{
+	p{
+	padding: 0.3em 1em 0 1em;
+	line-height: 1.4em;
+	font-size: 1rem;
+
+	}
 }
 
