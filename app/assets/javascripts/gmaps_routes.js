@@ -30,6 +30,7 @@ function initialize() {
         var mapOptions = {
           zoom: 8,
           disableDefaultUI: true,
+          draggable: false,
           styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}]
         };
     // Create new Map in the map-canvas ID
@@ -78,11 +79,6 @@ function renderRoute() {
 
 }
 
-
-
-
-
-
 // For each stopData apply the function addMarker
 function drawMarkers(stopData) {
 	stopData.forEach(function(stop){	
@@ -98,7 +94,6 @@ function makeStopArray(stops) {
 	});
 	return arrayoflatlongs;
 }
-
 
 function drawDirectionRoute (markers) {
 	var request = {
