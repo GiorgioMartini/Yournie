@@ -16,17 +16,28 @@
 		</div>
 	    </div>
 	  </li>
-
 	  <% end %>
 	</ul>
 	
 	<div id="map-canvas">
 	</div>
-</div>
-	
+
 	<div class="description">
 		<p class="show-description"></p>
 	</div>
+
+	<div class="voting">
+		<a href="" class="button vote-up">Up</a> <br>
+		<a href="" class="button vote-down">Down</a>
+	</div>
+	
+</div>
+	
+
+
+
+
+
 
 		<%-# comment -%>
 		<% if false %>			
@@ -49,6 +60,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if current_user.admin? %>
 
 	<div class="row ">
 	<h2>Create a new stop:</h2><br>
@@ -101,29 +144,29 @@
 	<% end %> 
 
 
-<h2>Add existing stop</h2>
-<br>
-<%= form_for(@waypoint) do |f| %>
-	<div class="field">
-	    <%= f.label :stop_id %><br>
-	    <%= f.number_field :stop_id %>
- 	</div>
-	<%= f.hidden_field  :route_id    %>
-	
-	<div class="actions">
-	    <%= f.submit %>
+	<h2>Add existing stop</h2>
+	<br>
+	<%= form_for(@waypoint) do |f| %>
+		<div class="field">
+		    <%= f.label :stop_id %><br>
+		    <%= f.number_field :stop_id %>
+	 	</div>
+		<%= f.hidden_field  :route_id    %>
+		
+		<div class="actions">
+		    <%= f.submit %>
+		</div>
+	<% end %> 
+
+	<%= link_to 'Edit', edit_route_path(@route) %> |
+	<%= link_to 'Back', routes_path %>
+	<br>
+	<br>
+	<br>
+		</div>
 	</div>
-<% end %> 
 
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
-<br>
-<br>
-<br>
-	</div>
-</div>
-
-
+<% end %>
 
 
 

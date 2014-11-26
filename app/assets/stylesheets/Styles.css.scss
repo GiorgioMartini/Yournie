@@ -36,7 +36,10 @@ h1.logo{
 */
 
 .route-item-wrapper{
-border:solid 1px #3C4254;
+	border:solid 1px #3C4254;
+	.voting{
+		text-align: center;
+	}
 }
 
 .route_img_wrapper{
@@ -51,7 +54,6 @@ border:solid 1px #3C4254;
 		color:$white;
 		margin: 0.4em 0 -1em 0;
 		text-align: center;
-	
 	}
 
 	h3{
@@ -69,7 +71,7 @@ border:solid 1px #3C4254;
 	p{
 	border: solid 1px $secondary-color;
 
-			}
+	}
 	
 }
 
@@ -98,7 +100,7 @@ border:solid 1px #3C4254;
 .route_img_icons{
 	text-align: center;
 	height: 1.6em;
-		border: solid 1px $secondary-color;
+	border: solid 1px $secondary-color;
 }
 
 
@@ -112,7 +114,7 @@ border:solid 1px #3C4254;
 #map-canvas{
 	width: 100%;
 	height: 8em;
-	// check HARD CODED COLORS HERE !!!
+	// check HARD CODED COLORS HERE
 	border-bottom: solid 1px #fff;
 	border-top: solid 1px #9E9E9E;
 
@@ -149,18 +151,18 @@ display: inherit;
 }
 
 .orbit-bullets {
-margin: 0 auto 0 auto;
-top :0;
+	margin: 0 auto 0 auto;
+	top :0;
 }
 
 .orbit-bullets-container {
-text-align: center;
-display: none; // antes era block
-margin: 0 auto;
-position: absolute;
-bottom: 1em;
-left: 0;
-right: 0;
+	text-align: center;
+	display: none; // antes era block
+	margin: 0 auto;
+	position: absolute;
+	bottom: 1em;
+	left: 0;
+	right: 0;
 }
 
 .orbit-container .orbit-slide-number {
@@ -168,21 +170,21 @@ right: 0;
 }
 
 .orbit-container .orbit-slides-container img {
-border-bottom: solid 1px #fff;
+	border-bottom: solid 1px #fff;
 }
 
 .touch .orbit-bullets {
-display: block;
+	display: block;
 }
 
 .orbit-container 
 .orbit-slides-container > * .orbit-caption {
-color: #fff;
-font-size: 1.2rem;
-text-align: center;
-text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-letter-spacing: -1px;
-line-height: 1.1em;
+	color: #fff;
+	font-size: 1.2rem;
+	text-align: center;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+	letter-spacing: -1px;
+	line-height: 1.1em;
 }
 
 
