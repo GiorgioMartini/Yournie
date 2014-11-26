@@ -14,7 +14,8 @@ class RoutesController < ApplicationController
   @stop = Stop.new
   @waypoint = Waypoint.new(route:  @route)
   @categories = Category.all
-    
+  @users = User.all 
+
   end
 
   # GET /routes/new
