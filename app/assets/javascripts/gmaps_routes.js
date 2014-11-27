@@ -64,7 +64,8 @@ function add_marker(myMarker){
 
 
 function renderRoute() { 
-	url = window.location.href+'.json';
+	url = '/routes/'+route_id+'.json';
+	console.log(url)
 	$.get(url, function(data){
 		
 		  stopLatLongs = makeStopArray(data.stops);

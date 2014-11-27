@@ -4,3 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end
+
+#  USERNAME !!!   
+# a@a.com
+# 12345678

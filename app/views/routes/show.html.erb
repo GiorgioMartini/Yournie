@@ -1,5 +1,9 @@
 <div class="small-12  stop_img_wrapper">
 
+<script> 
+route_id = <%= @route.id %>
+</script>
+
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
@@ -28,29 +32,52 @@
 
 	<div class="voting">
 
-	<%= form_for(Vote.new(user_id: current_user, route_id: @route, score: 1 )) do |f| %>
+		<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: 1 )) do |f| %>
 
-		<div class="field">
-		  <%= f.hidden_field :user_id %>
-		  <%= f.hidden_field :route_id %>
-		  <%= f.hidden_field :score %>
+			<div class="field">
+			  <%= f.hidden_field :user_id %>
+			  <%= f.hidden_field :route_id %>
+			  <%= f.hidden_field :score %>
+			</div>
 
-		</div>
+			<div class="actions">
+			  <%= f.submit "Awesome Route!",class: 'button' %>
+			</div>
+		<% end %>
 
-		<div class="actions">
-		  <%= f.submit "Awesome Route!",class: 'button' %>
-		</div>
-	<% end %>
-		
-	<a href="" class="button vote-down">Down</a>
+
+		<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: -1 )) do |f| %>
+
+			<div class="field">
+			  <%= f.hidden_field :user_id %>
+			  <%= f.hidden_field :route_id %>
+			  <%= f.hidden_field :score %>
+			</div>
+
+			<div class="actions">
+			  <%= f.submit "meh",class: 'button' %>
+			</div>
+		<% end %>
+			
 
 	</div>
 
-	
-	
+	<p>Overall Votes: <%= @route.score %> </p>
+	<p>Positive Votes: <%= @route.positive_votes %> </p>
+	<p>Negative Votes: <%= @route.negative_votes %> </p>
+		
 </div>
 
 	
+
+
+
+
+
+
+
+
+
 
 
 
@@ -93,33 +120,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <% if current_user.admin? %>
 
 	<div class="row ">
@@ -140,7 +140,10 @@
 		    <%= f.text_field :name %>
 	 	</div>
 		
-		<select name="category" id="">
+		<select name="category" id=" " >
+		  	
+		  	<option value="" disabled selected> Select a Category </option>
+
 		  	<% @categories.each do |category| %>
 		  	<option value="<%= category.id %>"> <%= category.name %> </option>
 			<% end %>
