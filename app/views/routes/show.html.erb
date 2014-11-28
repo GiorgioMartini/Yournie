@@ -120,7 +120,7 @@ route_id = <%= @route.id %>
 
 
 
-<% if current_user.admin? %>
+<% if current_user.present? and current_user.admin? %>
 
 	<div class="row ">
 	<h2>Create a new stop:</h2><br>
