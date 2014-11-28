@@ -66,35 +66,45 @@ h1.logo{
 	}
 }
 
+
+
 .route_wrapper{
+
+	a{
+		position: relative; 	
+		display: block;
+		img{
+		// position: relative; 
+		max-width: 100%;
+		display:block;
+		margin: 0 auto;
+		border: solid 1px $secondary-color;
+		}
 		
-	img{
-	max-width: 100%;
-	display:block;
-	margin: 0 auto;
-	border: solid 1px $secondary-color;
+		h3{
+		color: #fff;
+		text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+		line-height: 1em;
+		font-size: 1.7em;	
+		position: absolute; 
+		bottom: 1em;
+	  // width: 100%; //for IE 6
+	  padding: 0 1em 0 1em;
+	  margin: 0;
+	  font-weight: 400;
+		}
+	
 	}
+
+
 	h2{
 		color:$white;
 		margin: 0.4em 0 -1em 0;
 		text-align: center;
 	}
 
-	h3{
-	color: #fff;
-	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
-	line-height: 1em;
-	font-size: 1.7em;	
-	position: absolute; 
-	bottom: 1em;
-    width: 100%; /* for IE 6 */
-    padding: 0 1em 0 1em;
-    margin: 0;
-    font-weight: 400;
-	}
 	p{
 	border: solid 1px $secondary-color;
-
 	}
 	
 }
@@ -115,10 +125,7 @@ h1.logo{
 }
 
 
-.route_img{
-	position: relative; 
-    width: 100%; /* for IE 6 */
-}
+
 
 
 .route_img_icons{

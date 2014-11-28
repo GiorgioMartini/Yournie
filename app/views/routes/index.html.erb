@@ -4,10 +4,8 @@
     <div class="small-12 medium-4 large-3 columns route_wrapper">
 
           <a href=" <%= route_path(route) %> ">
-            <div class="route_img">    
               <img src="<%= route.route_image_url(:thumb) %>" >       
-              <h3 class="route_title"> <%= route.title %></h3>
-            </div>
+              <h3> <%= route.title %></h3>
           </a>
         
           <div class="route_img_icons">
