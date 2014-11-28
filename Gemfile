@@ -14,11 +14,12 @@ group :development do
 end
 group :production do
   gem 'pg'
-end
 #his gem modifies the way Rails works to suit Heroku
 gem 'rails_12factor'
+end
 
 
+gem 'fog'
 
 
 
