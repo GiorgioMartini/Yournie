@@ -2,6 +2,30 @@
 @import "settings";
 
 
+/*
+***********************
+*=foundations grid overrides
+***********************
+*/
+
+
+
+@media #{$small-only} {
+.small-12 {
+padding:0;
+}
+
+ }
+
+
+
+/*
+***********************
+*=Typography
+***********************
+*/
+
+
 
 @font-face {
 font-family: 'ChunkFive-Roman';
