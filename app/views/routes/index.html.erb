@@ -1,26 +1,28 @@
 
 <div class="row ">
   <% @routes.each do |route| %>
-    <div class="small-12 medium-4 large-3 columns route_wrapper">
+    <div class="small-12 medium-4 large-3 columns">
+      <div class="route_wrapper">
+            <a href=" <%= route_path(route) %> ">
+                <img src="<%= route.route_image_url(:thumb) %>" >       
+                <h3> <%= route.title %></h3>
+            </a>
+          
+            <div class="route_img_icons column">
+              <div class="small-4 columns"> A </div>
+              <div class="small-4 columns"> B </div>
+              <div class="small-4 columns"> C </div>
+            </div>
 
-          <a href=" <%= route_path(route) %> ">
-              <img src="<%= route.route_image_url(:thumb) %>" >       
-              <h3> <%= route.title %></h3>
-          </a>
-        
-          <div class="route_img_icons">
-            <div class="small-4 columns"> A </div>
-            <div class="small-4 columns"> B </div>
-            <div class="small-4 columns"> C </div>
-          </div>
-          <p><%= route.description %></p><br>  
-          <%= link_to 'Edit', edit_route_path(route) %>
-              
-                                      <%-# comment -%>
-                                        <% if false %>      
-                                          <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                        <% end %>
-                                      <%-# comment -%>
+            <p><%= route.description %></p>  
+                
+                                        <%-# comment -%>
+                                          <% if false %>      
+                                            <%= link_to 'Edit', edit_route_path(route) %>
+                                            <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                          <% end %>
+                                        <%-# comment -%>
+      </div>
     </div>
   <% end %>
 

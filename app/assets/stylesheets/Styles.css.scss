@@ -1,6 +1,4 @@
-
 @import "settings";
-
 
 /*
 ***********************
@@ -8,24 +6,21 @@
 ***********************
 */
 
-
-
 @media #{$small-only} {
-.small-12 {
-padding:0;
-}
-
+	.small-12 {
+	padding:0;
+	}
+	.route_wrapper{
+	max-width:530px;
+	margin:0 auto;
+	}
  }
-
-
 
 /*
 ***********************
 *=Typography
 ***********************
 */
-
-
 
 @font-face {
 font-family: 'ChunkFive-Roman';
@@ -40,18 +35,16 @@ body{
 	color: $white;
 }
 
-
-
-
 h1.logo{
+
 	color: $primary-color;
 	font-size:2em;
 	font-family: 'ChunkFive-Roman', 'serif';
 	font-size:1.5em;
 	text-align: center;
 	margin: 0.3em 0 0.5em 0;
-}
 
+}
 
 /*
 ***********************
@@ -59,17 +52,17 @@ h1.logo{
 ***********************
 */
 
-.route-item-wrapper{
+.stop-wrapper{
 	border:solid 1px #3C4254;
 	.voting{
 		text-align: center;
 	}
 }
 
-
-
 .route_wrapper{
-
+	
+	border: solid 1px $secondary-color;
+	
 	a{
 		position: relative; 	
 		display: block;
@@ -78,7 +71,6 @@ h1.logo{
 		max-width: 100%;
 		display:block;
 		margin: 0 auto;
-		border: solid 1px $secondary-color;
 		}
 		
 		h3{
@@ -96,7 +88,6 @@ h1.logo{
 	
 	}
 
-
 	h2{
 		color:$white;
 		margin: 0.4em 0 -1em 0;
@@ -104,10 +95,15 @@ h1.logo{
 	}
 
 	p{
-	border: solid 1px $secondary-color;
+	
 	}
+	.route_img_icons{
+	text-align: center;
 	
 }
+
+}
+
 
 .stop_img_wrapper{
 	img{
@@ -122,16 +118,6 @@ h1.logo{
 		font-size: 1.2em;
 	}
 
-}
-
-
-
-
-
-.route_img_icons{
-	text-align: center;
-	height: 1.6em;
-	border: solid 1px $secondary-color;
 }
 
 
@@ -158,7 +144,6 @@ h1.logo{
 	display: none;
 }
 
-
 .description{
 	p{
 	padding: 0.3em 1em 0 1em;
@@ -173,8 +158,6 @@ h1.logo{
 *=foundation slider
 ***********************
 */
-
-
 
 .touch .orbit-container .orbit-prev,
 .touch .orbit-container .orbit-next {
