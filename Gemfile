@@ -20,10 +20,14 @@ group :production do
 gem 'rails_12factor'
 end
 
-
 gem 'fog'
 
 gem 'figaro'
+
+gem "font-awesome-rails"
+
+
+
 
 
 # Use SCSS for stylesheets

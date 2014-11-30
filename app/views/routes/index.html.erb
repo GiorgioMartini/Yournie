@@ -9,13 +9,13 @@
             </a>
           
             <div class="route_img_icons column">
-              <div class="small-4 columns"> A </div>
-              <div class="small-4 columns"> B </div>
-              <div class="small-4 columns"> C </div>
+              <div class="small-4 columns"> <%= fa_icon "clock-o" %> </div>
+              <div class="small-4 columns"> <%= fa_icon "thumbs-o-up" %> </div>
+              <div class="small-4 columns"> <%= fa_icon "share-alt" %> </div>
             </div>
 
-            <p><%= route.description %></p>  
-                
+            <p><%= route.description %></p>
+
                                         <%-# comment -%>
                                           <% if false %>      
                                             <%= link_to 'Edit', edit_route_path(route) %>

@@ -27,7 +27,7 @@ font-family: 'ChunkFive-Roman';
 font-style: normal;
 font-weight: normal;
 src: local('ChunkFive-Roman'),
-url('/chunkfive/Chunkfive.woff') format('woff');
+url('/fonts/chunkfive/Chunkfive.woff') format('woff');
 }
 
 body{
@@ -52,17 +52,11 @@ h1.logo{
 ***********************
 */
 
-.stop-wrapper{
-	border:solid 1px #3C4254;
-	.voting{
-		text-align: center;
-	}
-}
-
 .route_wrapper{
 	
 	border: solid 1px $secondary-color;
-	
+	margin-bottom: 1em;
+
 	a{
 		position: relative; 	
 		display: block;
@@ -99,26 +93,42 @@ h1.logo{
 	}
 	.route_img_icons{
 	text-align: center;
-	
+	background:$yournie-darker-bg;
 }
 
 }
 
+/*
+***********************
+*=Stops
+***********************
+*/
 
-.stop_img_wrapper{
+.stop-wrapper{
+
+	border:solid 1px #3C4254;
+	max-width: 600px ;
+	margin: 0 auto;
+
 	img{
-		max-width: 100%;
-		display:block;
 		margin: 0 auto;
-		}
+	}
+	
 	h2{
 		color:$white;
 		text-align: center;
 		margin: 0.4em 0 1em 0;
 		font-size: 1.2em;
 	}
+	.voting{
+		text-align: center;
+	}
 
 }
+
+
+
+
 
 
 

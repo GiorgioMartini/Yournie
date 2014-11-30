@@ -1,74 +1,66 @@
-<div class="small-12  stop_img_wrapper">
+<div class="row">
+		<div class="small-12 medium-14 large-12 columns">
+			<script>route_id = <%= @route.id %></script>
+			<% if notice %>
+			<p id="notice"><%= notice %></p>
+			<% end %>
 
-<script> 
-route_id = <%= @route.id %>
-</script>
+			<div class="stop-wrapper">
+				<ul id="stops-carousel" data-orbit>
+				  <% @route.stops.each do |stop| %>
+				  <li>
+				    <img src="<%= stop.stop_image_url(:thumb_600) %>" alt="<%= stop.name %>" />
+				    <div class="orbit-caption">
+						<%= stop.name %>
+					<div class="hiddenDescriptions">
+						<%= stop.description %>	
+					</div>
+				    </div>
+				  </li>
+				  <% end %>
+				</ul>
+				
+				<div id="map-canvas">	</div>
 
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
+				<div class="description">
+					<p class="show-description"></p>
+				</div>
 
-<div class="stop-wrapper">
-	<ul id="stops-carousel" data-orbit>
-	  <% @route.stops.each do |stop| %>
-	  <li>
-	    <img src="<%= stop.stop_image_url(:thumb_600) %>" alt="<%= stop.name %>" />
-	    <div class="orbit-caption">
-			<%= stop.name %>
-		<div class="hiddenDescriptions">
-			<%= stop.description %>	
-		</div>
-	    </div>
-	  </li>
-	  <% end %>
-	</ul>
-	
-	<div id="map-canvas">
-	</div>
+				<div class="voting">
+					<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: 1 )) do |f| %>
 
-	<div class="description">
-		<p class="show-description"></p>
-	</div>
+						<div class="field">
+						  <%= f.hidden_field :user_id %>
+						  <%= f.hidden_field :route_id %>
+						  <%= f.hidden_field :score %>
+						</div>
 
-	<div class="voting">
+						<div class="actions">
+						  <%= f.submit "Awesome Route!",class: 'button' %>
+						</div>
+					<% end %>
 
-		<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: 1 )) do |f| %>
+					<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: -1 )) do |f| %>
 
-			<div class="field">
-			  <%= f.hidden_field :user_id %>
-			  <%= f.hidden_field :route_id %>
-			  <%= f.hidden_field :score %>
+							<div class="field">
+							  <%= f.hidden_field :user_id %>
+							  <%= f.hidden_field :route_id %>
+							  <%= f.hidden_field :score %>
+							</div>
+
+							<div class="actions">
+							  <%= f.submit "meh",class: 'button' %>
+							</div>
+						<% end %>
+				</div>
+
+				<p>Overall Votes: <%= @route.score %> </p>
+				<p>Positive Votes: <%= @route.positive_votes %> </p>
+				<p>Negative Votes: <%= @route.negative_votes %> </p>
+					
 			</div>
 
-			<div class="actions">
-			  <%= f.submit "Awesome Route!",class: 'button' %>
-			</div>
-		<% end %>
-
-
-		<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: -1 )) do |f| %>
-
-			<div class="field">
-			  <%= f.hidden_field :user_id %>
-			  <%= f.hidden_field :route_id %>
-			  <%= f.hidden_field :score %>
-			</div>
-
-			<div class="actions">
-			  <%= f.submit "meh",class: 'button' %>
-			</div>
-		<% end %>
-			
-
-	</div>
-
-	<p>Overall Votes: <%= @route.score %> </p>
-	<p>Positive Votes: <%= @route.positive_votes %> </p>
-	<p>Negative Votes: <%= @route.negative_votes %> </p>
 		
-</div>
-
-	
 
 
 
@@ -201,8 +193,7 @@ route_id = <%= @route.id %>
 <% end %>
 
 
-
-
+</div>
 
 
 
