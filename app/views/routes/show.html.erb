@@ -6,7 +6,10 @@
 			<% end %>
 
 			<div class="stop-wrapper">
-				<ul id="stops-carousel" data-orbit>
+				<ul id="stops-carousel" data-orbit data-options="timer_speed:2000;
+																												pause_on_hover: false;
+																												resume_on_mouseout: true,
+        																								timer: true">
 				  <% @route.stops.each do |stop| %>
 				  <li>
 				    <img src="<%= stop.stop_image_url(:thumb_600) %>" alt="<%= stop.name %>" />
