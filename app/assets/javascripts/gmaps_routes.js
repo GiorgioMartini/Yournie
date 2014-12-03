@@ -17,6 +17,13 @@ var map;
 var markerArray = [];
 var highlightMarker;
 
+var rendererOptions = {
+      suppressMarkers: true
+      // strokeColor: '#FF0000',
+      // strokeOpacity: 1.0,
+      // strokeWeight: 10
+    };
+
 /*
 ***********************
 *=Initialize
@@ -25,20 +32,23 @@ var highlightMarker;
 
 function initialize() {
 		//Create new DirectionsRenderer
-		directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});
+		directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 
         var mapOptions = {
           zoom: 8,
           disableDefaultUI: true,
-          draggable: false,
           styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}]
+
         };
     // Create new Map in the map-canvas ID
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	// Directions Display
   	directionsDisplay.setMap(map);
-	renderRoute();
+		renderRoute();
 }
+
+
+
 
 /*
 ***********************
@@ -62,20 +72,18 @@ function add_marker(myMarker){
 
 
 
-
 function renderRoute() { 
 	url = '/routes/'+route_id+'.json';
 	console.log(url)
 	$.get(url, function(data){
 		
-		  stopLatLongs = makeStopArray(data.stops);
+		stopLatLongs = makeStopArray(data.stops);
  		// draw_route( stopLatLongs );
- 		drawDirectionRoute( stopLatLongs );
+ 		drawDirectionRoute(stopLatLongs);
 		//drawMarkers(stopLatLongs);
- 		drawMarkers( data.stops );
+ 		drawMarkers(data.stops );
  		drawHighlightMarker(0);
 		printDescription(0);
-
 	});
 
 }
@@ -102,7 +110,8 @@ function drawDirectionRoute (markers) {
 	destination: markers[markers.length-1], 
 	waypoints: createWaypoints(markers),
 	optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode.WALKING
+  travelMode: google.maps.TravelMode.WALKING,
+
 	
 	}
 	
@@ -111,10 +120,12 @@ function drawDirectionRoute (markers) {
 	      directionsDisplay.setDirections(response);
 
 	     google.maps.event.addListenerOnce(map, 'idle', function(){
-
-		mapZoom = map.getZoom();
-		mapZoom = mapZoom+2;
-		map.setZoom(mapZoom); 
+	     
+	  //  var myBounds = map.getBounds();
+		// myFitBounds(map,myBounds);
+		// mapZoom = map.getZoom();
+		// mapZoom = mapZoom+1;
+		// map.setZoom(mapZoom); 
 
 		});
 
@@ -122,6 +133,8 @@ function drawDirectionRoute (markers) {
 	})      
 
 }
+
+
 
 function createWaypoints(stops){
 	return stops.map(function(stop){
@@ -161,6 +174,52 @@ function printDescription (slideNumber){
 	var descriptionHtml = hiddenDescArray[slideNumber].innerHTML;
 	$(".show-description").html(descriptionHtml);
 }
+
+
+function myFitBounds(myMap, bounds) {
+    myMap.fitBounds(bounds); // calling fitBounds() here to center the map for the bounds
+
+    var overlayHelper = new google.maps.OverlayView();
+    overlayHelper.draw = function () {
+        if (!this.ready) {
+            var extraZoom = getExtraZoom(this.getProjection(), bounds, myMap.getBounds());
+            if (extraZoom > 0) {
+                myMap.setZoom(myMap.getZoom() + extraZoom);
+            }
+            this.ready = true;
+            google.maps.event.trigger(this, 'ready');
+        }
+    };
+    overlayHelper.setMap(myMap);
+}
+
+function getExtraZoom(projection, expectedBounds, actualBounds) {
+
+    // in: LatLngBounds bounds -> out: height and width as a Point
+    function getSizeInPixels(bounds) {
+        var sw = projection.fromLatLngToContainerPixel(bounds.getSouthWest());
+        var ne = projection.fromLatLngToContainerPixel(bounds.getNorthEast());
+        return new google.maps.Point(Math.abs(sw.y - ne.y), Math.abs(sw.x - ne.x));
+    }
+
+    var expectedSize = getSizeInPixels(expectedBounds),
+        actualSize = getSizeInPixels(actualBounds);
+
+    if (Math.floor(expectedSize.x) == 0 || Math.floor(expectedSize.y) == 0) {
+        return 0;
+    }
+
+    var qx = actualSize.x / expectedSize.x;
+    var qy = actualSize.y / expectedSize.y;
+    var min = Math.min(qx, qy);
+
+    if (min < 1) {
+        return 0;
+    }
+
+    return Math.floor(Math.log(min) / Math.LN2 /* = log2(min) */);
+}
+
 
 
 google.maps.event.addDomListener(window, 'load', initialize);

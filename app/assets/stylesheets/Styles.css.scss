@@ -2,7 +2,7 @@
 
 /*
 ***********************
-*=foundations grid overrides
+*=foundations overrides
 ***********************
 */
 
@@ -15,6 +15,28 @@
 	margin:0 auto;
 	}
  }
+
+.top-bar {
+
+}
+
+.contain-to-grid{	
+	// check this to do it with mixins !!!!!!!!
+	-moz-box-shadow:    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	box-shadow:         0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+	margin-bottom: 2em;
+}
+
+@media #{$small-only} {
+	.contain-to-grid{	
+			margin-bottom: 0;
+		}
+}
+
+
+
 
 /*
 ***********************
@@ -31,20 +53,47 @@ url('/fonts/chunkfive/Chunkfive.woff') format('woff');
 }
 
 body{
-	background: #2d394b;
-	color: $white;
+	background: $yournie-bg-color;
+	color: $paragrapho;
 }
 
 h1.logo{
 
 	color: $primary-color;
 	font-size:2em;
-	font-family: 'ChunkFive-Roman', 'serif';
-	font-size:1.5em;
+	font-family: 'ChunkFive-Roman', 'serif';	
 	text-align: center;
-	margin: 0.3em 0 0.5em 0;
+
 
 }
+
+.footer{
+	position: relative;
+	.logo-bg{
+		position: absolute;
+		background: $yournie-bg-color;
+		width: 50px;
+		height: 20px;
+		top: 10px;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+
+		.footer-logo{	
+		color: #7B7B7B;		
+  		text-shadow: 0px 2px 3px rgba(255,255,255,0.3);  		
+			position: absolute;
+			font-size:2em;
+			font-family: 'ChunkFive-Roman', 'serif';	
+			text-align: center;
+			margin: 0.3em 0 0.5em 0;
+			top: -22px;
+			left: 0;
+			right: 0;
+		}
+	}
+}
+
 
 /*
 ***********************
@@ -53,9 +102,13 @@ h1.logo{
 */
 
 .route_wrapper{
-	
-	border: solid 1px $secondary-color;
-	margin-bottom: 1em;
+	// check this to do it with mixins !!!!!!!!
+  -moz-box-shadow:    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow:         0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+	border: solid 1px $border-line-col;
+	margin-bottom: 2em;
 
 	a{
 		position: relative; 	
@@ -69,7 +122,7 @@ h1.logo{
 		
 		h3{
 		color: #fff;
-		text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+		text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
 		line-height: 1em;
 		font-size: 1.7em;	
 		position: absolute; 
@@ -88,15 +141,60 @@ h1.logo{
 		text-align: center;
 	}
 
-	p{
-	
+	p{		
+		background:$white;	
+		padding:1em;
+		margin-bottom: 0;
 	}
+
 	.route_img_icons{
-	text-align: center;
-	background:$yournie-darker-bg;
+		font-size: 1.2em;
+		padding:0;
+		color: $route-icons;
+		background:$white;
+		border-bottom:solid 1px $grey-lines;
+	 	.icons-text{
+	 		font-size:0.8em;
+	 		padding-left: 0.6em;
+	 		bottom: 0.2em;
+			position: absolute;	
+	 	}
+	}
 }
 
+@media #{$medium-only} {
+	.route_wrapper{
+		.route_img_icons{
+			font-size: 1.2em;
+			height: 2.6em;
+			text-align: center;
+		 	.icons-text{
+		 		font-size:0.7em;
+		 		padding-left: 0;
+		 		bottom: -1.3em;
+				right: 0;
+				left: 0em;
+
+		 	}
+		}
+	}
 }
+
+@media #{$large-up} {
+	.route_wrapper{
+		.route_img_icons{
+			font-size: 1em;
+		 	.icons-text{
+		 		font-size: 0.7em;
+				padding-left: 0.5em;
+				bottom: 0.4em;
+				position: absolute;
+		 	}
+		}
+	}
+}
+
+
 
 /*
 ***********************
@@ -104,50 +202,48 @@ h1.logo{
 ***********************
 */
 
-.stop-wrapper{
-
-	border:solid 1px #3C4254;
-	max-width: 600px ;
-	margin: 0 auto;
-
-	img{
-		margin: 0 auto;
+.stop-title{
+		margin-top: -1em;
+	h1{	
+		letter-spacing: -2px;
+		font-weight: 900;	
+		text-align:center;
+		text-transform: capitalize;
+		margin: -0.2em;
+		text-shadow: 1px 1px 0px #FFF;
 	}
 	
-	h2{
-		color:$white;
-		text-align: center;
-		margin: 0.4em 0 1em 0;
-		font-size: 1.2em;
-	}
-	.voting{
-		text-align: center;
-	}
-
 }
 
+@media #{$small-only} {
+	.stop-title{
+	display: none;
+	}	
+}
 
-
-
-
-
-
+.stop-wrapper{	
+	max-width: 600px ;
+	margin: 0 auto;
+		img{
+			margin:0 auto;
+		}
+		
+		h2{
+			color:$white;
+			text-align: center;
+			margin: 0.4em 0 1em 0;
+			font-size: 1.2em;
+		}
+}
+	
 /*
 ***********************
 *=Misc
 ***********************
 */
 
-#map-canvas{
-	width: 100%;
-	height: 8em;
-	// check HARD CODED COLORS HERE
-	border-bottom: solid 1px #fff;
-	border-top: solid 1px #9E9E9E;
-
-		img{
-			max-width: inherit;
-		}
+.voting{
+		padding: 1em 0 1em 0;
 }
 
 .hiddenDescriptions{
@@ -155,13 +251,64 @@ h1.logo{
 }
 
 .description{
+	clear: both;
+	min-height: 120px;
+
 	p{
-	padding: 0.3em 1em 0 1em;
+	padding: 1em 1em 1em 1em;
 	line-height: 1.4em;
 	font-size: 1rem;
 
 	}
 }
+
+
+
+/*
+***********************
+*=Map
+***********************
+*/
+
+.map-container{
+	.map-width{			
+			}
+	}
+
+#map-canvas{
+				width: 100%;
+				height:12em;
+					img{
+						max-width: inherit;
+					}
+}
+
+
+@media #{$medium-up} {
+	.map-container{
+		 display: inline-block;
+		  position: relative;
+	
+			.map-width{
+				 	padding-top: 100%;						
+			}
+
+	}
+
+	#map-canvas{
+								height:100%;
+								width: 100%;
+								position: absolute;
+						    top: 0;
+						    bottom: 0;
+						    left: 0;
+						    right: 0;
+						    clip: rect(0px, 485px, 470px, 15px);
+							}
+}
+
+
+
 
 /*
 ***********************
@@ -194,7 +341,7 @@ display: inherit;
 }
 
 .orbit-container .orbit-slides-container img {
-	border-bottom: solid 1px #fff;
+
 }
 
 .touch .orbit-bullets {

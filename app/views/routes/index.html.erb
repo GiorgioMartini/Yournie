@@ -9,13 +9,11 @@
             </a>
           
             <div class="route_img_icons column">
-              <div class="small-4 columns"> <%= fa_icon "clock-o" %> </div>
-              <div class="small-4 columns"> <%= fa_icon "thumbs-o-up" %> </div>
-              <div class="small-4 columns"> <%= fa_icon "share-alt" %> </div>
+              <div class="small-4 columns"><%= fa_icon "clock-o" %><span class="icons-text">Duration</span></div>
+              <div class="small-4 columns"><%= fa_icon "thumbs-o-up" %><span class="icons-text">Likes</span></div>
+              <div class="small-4 columns"><%= fa_icon "share-alt" %><span class="icons-text">Share</span></div>
             </div>
-
             <p><%= route.description %></p>
-
                                         <%-# comment -%>
                                           <% if false %>      
                                             <%= link_to 'Edit', edit_route_path(route) %>
@@ -25,7 +23,6 @@
       </div>
     </div>
   <% end %>
-
       <%= link_to 'New Route', new_route_path %>
 </div>
 <br>

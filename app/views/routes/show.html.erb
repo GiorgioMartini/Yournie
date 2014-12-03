@@ -1,15 +1,19 @@
 <div class="row">
-		<div class="small-12 medium-14 large-12 columns">
-			<script>route_id = <%= @route.id %></script>
-			<% if notice %>
+
+	<div class="stop-title small-12 medium-12 large-12 columns">
+		<hr> <h1><%= @route.title %></h1> <hr>
+	</div>	
+
+	<div class="small-12 medium-6 large-6 columns">
+		<script>route_id = <%= @route.id %></script>
+		<% if notice %>
 			<p id="notice"><%= notice %></p>
-			<% end %>
+		<% end %>
 
 			<div class="stop-wrapper">
-				<ul id="stops-carousel" data-orbit data-options="timer_speed:2000;
-																												pause_on_hover: false;
-																												resume_on_mouseout: true,
-        																								timer: true">
+				<ul id="stops-carousel" data-orbit data-options="timer_speed:4000;
+																												pause_on_hover:false;
+        																								timer:true;">
 				  <% @route.stops.each do |stop| %>
 				  <li>
 				    <img src="<%= stop.stop_image_url(:thumb_600) %>" alt="<%= stop.name %>" />
@@ -22,60 +26,72 @@
 				  </li>
 				  <% end %>
 				</ul>
-				
-				<div id="map-canvas">	</div>
+		</div>
+	</div>
+	
+	<div class="map-container small-12 medium-6 large-6 columns ">
+			<div class="map-width "></div>	
+			<div id="map-canvas">	</div>
+	</div>
 
-				<div class="description">
-					<p class="show-description"></p>
-				</div>
 
-				<div class="voting">
-					<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: 1 )) do |f| %>
 
+	<div class="description small-12 medium-6 large-6 columns">
+		<p class="show-description"></p>
+	</div>
+
+	<div class="small-12 medium-6 large-6 columns voting">
+
+	
+			<div class="medium-6 columns">
+				<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: 1 )) do |f| %>
 						<div class="field">
 						  <%= f.hidden_field :user_id %>
 						  <%= f.hidden_field :route_id %>
 						  <%= f.hidden_field :score %>
 						</div>
 
-						<div class="actions">
-						  <%= f.submit "Awesome Route!",class: 'button' %>
-						</div>
-					<% end %>
+						<div class="actions"> 
+									<%-# f.submit "Vote up",class: 'button' -%>
 
-					<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: -1 )) do |f| %>
+								 <button class="expand"  type="submit" >
+										<%= fa_icon "thumbs-o-up" %>&nbsp;&nbsp;&nbsp;  Awesome! 
+								 </button>
+						</div>							
+				<% end %>
+		</div>
 
-							<div class="field">
-							  <%= f.hidden_field :user_id %>
-							  <%= f.hidden_field :route_id %>
-							  <%= f.hidden_field :score %>
-							</div>
+	
+		<div class="medium-6 columns">
+			<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: -1 )) do |f| %>
+					<div class="field">
+					  <%= f.hidden_field :user_id %>
+					  <%= f.hidden_field :route_id %>
+					  <%= f.hidden_field :score %>
+					</div>
 
-							<div class="actions">
-							  <%= f.submit "meh",class: 'button' %>
-							</div>
-						<% end %>
-				</div>
+					<div class="actions">
+					  <button class="expand" type="submit" >
+							<%= fa_icon "thumbs-o-down" %>&nbsp;&nbsp;&nbsp; Boooooh! 
+						</button>
+					</div>
+			<% end %>
 
-				<p>Overall Votes: <%= @route.score %> </p>
-				<p>Positive Votes: <%= @route.positive_votes %> </p>
-				<p>Negative Votes: <%= @route.negative_votes %> </p>
-					
-			</div>
+		</div>
+	</div>
 
+
+	
+	
+
+	<div class="small-12 medium-12 large-12 columns">
+		Overall Votes: <%= @route.score %>  &nbsp;
+		Positive Votes: <%= @route.positive_votes %> &nbsp;
+		Negative Votes: <%= @route.negative_votes %> &nbsp;
+	</div>
 		
 
-
-
-
-
-
-
-
-
-
-
-
+		
 
 
 
@@ -191,23 +207,10 @@
 	<br>
 	<br>
 		</div>
-	</div>
+	
 
 <% end %>
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
