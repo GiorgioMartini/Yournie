@@ -6,6 +6,16 @@
 ***********************
 */
 
+
+.top-bar .toggle-topbar.menu-icon a {
+color: $primary-color;
+}
+
+
+.top-bar .toggle-topbar.menu-icon a span::after {
+box-shadow: 0 0px 0 1px $primary-color, 0 7px 0 1px $primary-color, 0 14px 0 1px $primary-color;
+}
+
 @media #{$small-only} {
 	.small-12 {
 	padding:0;
@@ -57,15 +67,42 @@ body{
 	color: $paragrapho;
 }
 
-h1.logo{
-
+.top-bar .name h1 a {
 	color: $primary-color;
-	font-size:2em;
+	font-size:1.5em;
 	font-family: 'ChunkFive-Roman', 'serif';	
-	text-align: center;
 
 
 }
+
+@media #{$small-only} {
+	.top-bar .name h1 a {
+		text-align: center;	
+		margin: 0 auto;
+
+	}
+}
+
+
+.tagline{
+		font-size:4em;
+		text-align: center;
+		font-weight:800;
+		display: block;
+		text-transform: uppercase;
+		word-spacing: 0.3em;
+		margin-bottom: -0.2em;
+}
+	.subtitle{
+		font-size:1em;
+		text-align: center;
+		font-weight:700; 
+		display: block;
+		margin-bottom: 3em;
+
+	}
+
+
 
 .footer{
 	position: relative;
@@ -204,7 +241,8 @@ h1.logo{
 
 .stop-title{
 		margin-top: -1em;
-	h1{	
+	h1{
+		color:#444444;	
 		letter-spacing: -2px;
 		font-weight: 900;	
 		text-align:center;
