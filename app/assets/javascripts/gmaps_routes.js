@@ -84,6 +84,8 @@ function renderRoute() {
  		drawMarkers(data.stops );
  		drawHighlightMarker(0);
 		printDescription(0);
+    printName(0);
+
 	});
 
 }
