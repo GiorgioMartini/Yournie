@@ -169,11 +169,6 @@ var stopPos = markerArray[markerNumber].getPosition();
 }
 
 
-function printDescription (slideNumber){
-	var hiddenDescArray = $(".hiddenDescriptions");
-	var descriptionHtml = hiddenDescArray[slideNumber].innerHTML;
-	$(".show-description").html(descriptionHtml);
-}
 
 
 function myFitBounds(myMap, bounds) {
@@ -221,6 +216,20 @@ function getExtraZoom(projection, expectedBounds, actualBounds) {
 }
 
 
+function printDescription (slideNumber){
+	var hiddenDescArray = $(".hiddenDescriptions");
+	var descriptionHtml = hiddenDescArray[slideNumber].innerHTML;
+	$(".show-description").html(descriptionHtml);
+}
+
+function printName (slideNumber){
+  var hiddenNameArray = $(".hiddenName");
+  var nameHtml = hiddenNameArray[slideNumber].innerHTML;
+  $(".show-name").html(nameHtml);
+}
+
+
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -229,6 +238,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 $("#stops-carousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
 drawHighlightMarker(orbit.slide_number);
 printDescription(orbit.slide_number);
+printName(orbit.slide_number);
 });
 
 

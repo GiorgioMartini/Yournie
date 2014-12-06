@@ -4,13 +4,33 @@
 		<hr> <h1><%= @route.title %></h1> <hr>
 	</div>	
 
+
+
 	<div class="small-12 medium-6 large-6 columns">
 		<script>route_id = <%= @route.id %></script>
 		<% if notice %>
 			<p id="notice"><%= notice %></p>
 		<% end %>
 
+
+
 			<div class="stop-wrapper">
+
+	<div class="medium-6 large-6 columns">
+		
+    <p class="show-description"></p>
+	  <% @route.stops.each do |stop| %>
+		  <div class="hiddenName">
+			<%= stop.name %>
+	    </div>
+	  <% end %>
+      <p class="show-name"></p>
+
+
+	</div>
+
+
+
 				<ul id="stops-carousel" data-orbit data-options="timer_speed:4000;
 																												pause_on_hover:false;
         																								timer:true;">
@@ -78,17 +98,26 @@
 			<% end %>
 
 		</div>
-	</div>
-
-
-	
+	</div>	
 	
 
-	<div class="small-12 medium-12 large-12 columns">
-		Overall Votes: <%= @route.score %>  &nbsp;
-		Positive Votes: <%= @route.positive_votes %> &nbsp;
-		Negative Votes: <%= @route.negative_votes %> &nbsp;
-	</div>
+
+		<div class="small-12 medium-12 large-12 columns">
+
+			<div class="small-4 medium-4 large-4 columns stop-info">
+			This route takes aprox. 2.15 hrs
+			</div>			
+			<div class="small-4 medium-4 large-4 columns stop-info">
+			23.K Likes
+			</div>
+			<div class="small-4 medium-4 large-4 columns stop-info">
+			Share
+			</div>
+		
+		</div>
+
+
+	  <%= render "/layouts/fb_comments" %>
 		
 
 		
@@ -109,7 +138,12 @@
 
 
 		<%-# comment -%>
-		<% if false %>			
+		<% if false %>
+
+			Overall Votes: <%= @route.score %>  
+			Positive Votes: <%= @route.positive_votes %> 
+			Negative Votes: <%= @route.negative_votes %> 
+
           <%= link_to 'Edit', edit_stop_path(stop) %>
 		  <%= link_to 'Delete Stop', stop, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<p> 
