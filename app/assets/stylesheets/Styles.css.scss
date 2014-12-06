@@ -367,6 +367,40 @@ body{
 	}
 }
 
+@media #{$small-only} {
+	.description{
+		display:none;
+		p{
+		display:none;
+
+		}
+	}
+}
+
+.description-phone{
+	clear: both;
+	min-height: 120px;
+
+	p{
+	//padding: 1em 1em 1em 1em;
+	line-height: 1.4em;
+	font-size: 1rem;
+
+	}
+}
+
+@media #{$medium-up} {
+	.description-phone{
+		display:none;
+		p{
+		display:none;
+
+		}
+	}
+}
+
+
+
 
 
 
