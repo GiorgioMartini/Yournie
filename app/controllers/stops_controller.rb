@@ -5,6 +5,7 @@ class StopsController < ApplicationController
   # GET /stops.json
   def index
     @stops = Stop.all
+
   end
 
   # GET /stops/1
@@ -20,6 +21,7 @@ class StopsController < ApplicationController
 
   # GET /stops/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /stops
@@ -51,6 +53,7 @@ class StopsController < ApplicationController
   # PATCH/PUT /stops/1
   # PATCH/PUT /stops/1.json
   def update
+
     respond_to do |format|
       if @stop.update(stop_params)
         format.html { redirect_to @stop, notice: 'Stop was successfully updated.' }

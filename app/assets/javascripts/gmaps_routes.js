@@ -31,10 +31,12 @@ var rendererOptions = {
 */
 
 function initialize() {
+    var isDraggable = $(document).width() > 600 ? true : false; 
 		//Create new DirectionsRenderer
 		directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 
         var mapOptions = {
+          draggable: isDraggable,
           zoom: 8,
           disableDefaultUI: true,
           styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}]
@@ -233,6 +235,7 @@ function printName (slideNumber){
 
 
 
+
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
@@ -242,10 +245,4 @@ drawHighlightMarker(orbit.slide_number);
 printDescription(orbit.slide_number);
 printName(orbit.slide_number);
 });
-
-
-
-
-
-
 

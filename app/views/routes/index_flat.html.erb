@@ -1,0 +1,68 @@
+
+<div class="row  tag-wrapper">
+  <span class="tagline">Inside Berlin</span>
+    <span class="subtitle">Discover unique guided routes with awesome spots in Berlin</span>
+</div>
+
+<div class="row ">
+  <% @routes.each do |route| %>
+    <div class="route-wrapper small-12 medium-4 large-4 columns no-padding">
+      <div class="route_item">
+                <h3> <%= route.title %></h3>
+
+
+            
+              <a href=" <%= route_path(route) %> ">
+                <figure>
+                      <img src="<%= route.route_image_url(:thumb) %>" >       
+                      <figcaption>
+                        <h3> <%= route.title %></h3>
+                        <p><%= route.description %></p>
+
+                        <div class="route_img_icons column">
+                          <div class="small-4 columns"><%= fa_icon "clock-o" %><span class="icons-text">Duration</span></div>
+                          <div class="small-4 columns"><%= fa_icon "thumbs-o-up" %><span class="icons-text">Likes</span></div>
+                          <div class="small-4 columns"><%= fa_icon "share-alt" %><span class="icons-text">Share</span></div>
+                        </div>
+
+                      </figcaption> 
+                </figure>
+              </a>
+            
+ 
+            
+
+
+
+                                        <%-# comment -%>
+                                          <% if false %> 
+             <div class="route_img_icons column">
+                <div class="small-4 columns"><%= fa_icon "clock-o" %><span class="icons-text">Duration</span></div>
+                <div class="small-4 columns"><%= fa_icon "thumbs-o-up" %><span class="icons-text">Likes</span></div>
+                <div class="small-4 columns"><%= fa_icon "share-alt" %><span class="icons-text">Share</span></div>
+              </div>
+              <p><%= route.description %></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                                               
+                                            <%= link_to 'Edit', edit_route_path(route) %>
+                                            <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                          <% end %>
+                                        <%-# comment -%>
+      </div>
+    </div>
+  <% end %>
+</div>
+      <%= link_to 'New Route', new_route_path %>
+
+

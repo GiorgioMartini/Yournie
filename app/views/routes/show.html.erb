@@ -1,262 +1,312 @@
-		<script>route_id = <%= @route.id %></script>
-		<% if notice %>
-			<p id="notice"><%= notice %></p>
-		<% end %>
-
 <div class="row">
+	<div class="small-12 medium-12 large-12 columns page-wrapper">
+			<script>route_id = <%= @route.id %></script>
+			<% if notice %>
+				<p id="notice"><%= notice %></p>
+			<% end %>
 
-	<div class="stop-title small-12 medium-12 large-12 columns">
-		 <h1><%= @route.title %></h1> <hr>
-	</div>	
+	<div class="row">
 
-
-
-
-<div class="row">
-
-		<div class="small-12 medium-6 large-6 columns">
-			<div class="description">
-			  <% @route.stops.each do |stop| %>
-				  <div class="hiddenName">
-					<%= stop.name %>
-			    </div>
-			  <% end %>
-		      <h1 class="show-name"></h1>
-		    	<p class="show-description"></p>
-			</div>
-		</div>
+		<div class="stop-title small-12 medium-12 large-12 columns">
+			 <h1><%= @route.title %></h1> <hr>
+		</div>	
 
 
-	<div class="stop-info-wrapper small-12 medium-6 large-6 columns">
-
-		<div class="small-4 medium-4 large-4 columns stop-info">
-		Aprox route time:
-		</div>			
-		<div class="small-4 medium-4 large-4 columns stop-info">
-		23.K Votes
-		</div>
-		<div class="small-4 medium-4 large-4 columns stop-info">
-		Share
-		</div>
-	
-	</div>
-
-</div>
-
-
-
-
-
-<div class="row">
-	<div class="small-12 medium-6 large-6 columns">
-
-			<ul id="stops-carousel" data-orbit data-options="timer_speed:4000;
-																											pause_on_hover:false;
-	    																								timer:true;">
-			  <% @route.stops.each do |stop| %>
-			  <li>
-			    <img src="<%= stop.stop_image_url(:thumb_600) %>" alt="<%= stop.name %>" />
-			    <div class="orbit-caption">
-					<%= stop.name %>
-				<div class="hiddenDescriptions">
-					<%= stop.description %>	
+			<div class="small-12 medium-6 large-6 columns">
+				<div class="description">
+				  <% @route.stops.each do |stop| %>
+					  <div class="hiddenName">
+						<%= stop.name %>
+				    </div>
+				  <% end %>
+			      <h3 class="show-name showname"></h3>
+			    	<p class="show-description"></p> 
+			    	<h5>Category:  </h5>
 				</div>
-			    </div>
-			  </li>
-			  <% end %>
-			</ul>
-	</div>
+			</div>
 
-	<div class="map-container small-12 medium-6 large-6 columns ">
-			<div class="map-width "></div>	
-			<div id="map-canvas">	</div>
-	</div>
-
-	<div class="description-phone small-12 medium-6 large-6 columns">
-		<p class="show-description"></p>
-	</div>
-
-</div>
-
-
-
-<div class="row">
-
-
-
-
+		
 		<div class="small-12 medium-6 large-6 columns">
-			<div class="voting">
-					<div class="medium-6 columns">
-						<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: 1 )) do |f| %>
+
+			<div class="route-desc-desktop small-12 medium-12 large-12 columns">
+		  	<p> <%= @route.description %> </p>
+			</div>
+
+			<div class="stop-info-wrapper small-12 medium-12 large-12 columns">
+
+				<div class="small-4 medium-4 large-4 columns stop-info ">
+				<%= fa_icon "clock-o" %>&nbsp;&nbsp;Aprox time
+				</div>			
+				<div class="small-4 medium-4 large-4 columns stop-info add-left-border">
+				<%= fa_icon "thumbs-o-up" %>&nbsp;&nbsp;23.K Votes
+				</div>
+				<div class="small-4 medium-4 large-4 columns stop-info add-left-border ">
+				<%= fa_icon "share" %>&nbsp;&nbsp;Share
+				</div>
+			
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	<div class="row">
+		<div class="small-12 medium-6 large-6 columns">
+
+				<ul id="stops-carousel" data-orbit data-options="timer_speed:4000;
+																												pause_on_hover:false;
+		    																								timer:true;">
+				  <% @route.stops.each do |stop| %>
+				  <li>
+				    <img src="<%= stop.stop_image_url(:thumb_600) %>" alt="<%= stop.name %>" />
+				    <div class="orbit-caption">
+						<%= stop.name %>
+					<div class="hiddenDescriptions">
+						<%= stop.description %>	
+					</div>
+				    </div>
+				  </li>
+				  
+				  <% end %>
+				</ul>
+		</div>
+
+		<div class="map-container small-12 medium-6 large-6 columns ">
+				<div class="map-width "></div>	
+				<div id="map-canvas">	</div>
+		</div>
+
+		<div class="description-phone small-12 medium-6 large-6 columns">
+			<p class="show-description"></p>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	<div class="row">
+			<div class="small-12 medium-6 large-6 columns">
+				<div class="voting">
+					<h3 class="text-center ">Vote for this Route:</h3>
+						<div class="medium-6 columns remove-padding-sides">
+							<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: 1 )) do |f| %>
+									<div class="field">
+									  <%= f.hidden_field :user_id %>
+									  <%= f.hidden_field :route_id %>
+									  <%= f.hidden_field :score %>
+									</div>
+
+									<div class="actions"> 
+												<%-# f.submit "Vote up",class: 'button' -%>
+
+											 <button class="expand"  type="submit" >
+													<%= fa_icon "thumbs-o-up" %>&nbsp;&nbsp;&nbsp;  Awesome! 
+											 </button>
+									</div>							
+							<% end %>
+					</div>
+
+				
+					<div class="medium-6 columns remove-padding-sides">
+						<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: -1 )) do |f| %>
 								<div class="field">
 								  <%= f.hidden_field :user_id %>
 								  <%= f.hidden_field :route_id %>
 								  <%= f.hidden_field :score %>
 								</div>
 
-								<div class="actions"> 
-											<%-# f.submit "Vote up",class: 'button' -%>
-
-										 <button class="expand"  type="submit" >
-												<%= fa_icon "thumbs-o-up" %>&nbsp;&nbsp;&nbsp;  Awesome! 
-										 </button>
-								</div>							
+								<div class="actions">
+								  <button class="expand" type="submit" >
+										<%= fa_icon "thumbs-o-down" %>&nbsp;&nbsp;&nbsp; Boooooh! 
+									</button>
+								</div>
 						<% end %>
+
+					</div>
 				</div>
+			</div>
+
+
+
+				<div class="route-desc-phone small-12 columns">
+					<hr>
+					<p> <%= @route.description %> </p>
+				</div>	
+
+			<div class="fb_comments small-12 medium-6 large-6 columns">
+				<%= render "/layouts/fb_comments" %>
+			</div>
+	</div>	
+
+
+
 
 			
-				<div class="medium-6 columns">
-					<%= form_for(Vote.new(user: current_user, route_id: @route.id, score: -1 )) do |f| %>
-							<div class="field">
-							  <%= f.hidden_field :user_id %>
-							  <%= f.hidden_field :route_id %>
-							  <%= f.hidden_field :score %>
-							</div>
 
-							<div class="actions">
-							  <button class="expand" type="submit" >
-									<%= fa_icon "thumbs-o-down" %>&nbsp;&nbsp;&nbsp; Boooooh! 
-								</button>
-							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<%-# comment -%>
+			<% if false %>
+
+				Overall Votes: <%= @route.score %>  
+				Positive Votes: <%= @route.positive_votes %> 
+				Negative Votes: <%= @route.negative_votes %> 
+
+	          <%= link_to 'Edit', edit_stop_path(stop) %>
+	          
+			  <%= link_to 'Delete Stop', stop, method: :delete, data: { confirm: 'Are you sure?' } %>
+				<p> 
+					Category: 
+					<% stops.categories.each do |category| %>
+						<%= category.name %>
 					<% end %>
+				</p>
+				<p> Stop ID: <%= stops.id %>  </p>
+				<p> Stop name :<%= stops.name %>  </p>
+				<p> Stop description :<%= stops.description %> </p>
+				<p> Stop lat :<%= stops.stop_lat %>  </p>
+				<p> Stop long:<%= stops.stop_long %>  </p>
+			<% end %>
+			<%-# comment -%>
 
-				</div>
-			</div>	
-		</div>	
 
-		<div class="small-12 medium-6 large-6 columns">
-			<%= render "/layouts/fb_comments" %>
-		</div>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<% if current_user.present? and current_user.admin? %>
+
+		<div class="row ">
+		<h2>Create a new stop:</h2><br>
+		<%= form_for(@stop) do |f| %>
+		  <% if @stop.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@stop.errors.count, "error") %> prohibited this stop from being saved:</h2>
+		      <ul>
+		      <% @stop.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  	<% end %>
+		 	<div class="field">
+			    <%= f.label :name %><br>
+			    <%= f.text_field :name %>
+		 	</div>
+			
+			<select name="category" id=" " >
+			  	
+			  	<option value="" disabled selected> Select a Category </option>
+
+			  	<% @categories.each do |category| %>
+			  	<option value="<%= category.id %>"> <%= category.name %> </option>
+				<% end %>
+			</select>
+		 	
+		 	<div class="field">
+			    <%= f.label :description %><br>
+			    <%= f.text_area :description %>
+		 	</div>
 			
 
-</div>
+			<div class="field">
+			    <%= f.label :stop_image %><br>
+			    <%= f.file_field :stop_image %>
+			</div>
 
+			<div class="field">
+			    <%= f.label :stop_lat %><br>
+			    <%= f.number_field :stop_lat, :class => 'text_field', :step => 'any' %>
+			</div>
+			<div class="field">
+			    <%= f.label :stop_long %><br>
+			    <%= f.number_field :stop_long, :class => 'text_field', :step => 'any' %>
+			</div>
+
+				<%= hidden_field_tag  :route_id,  params[:id]    %>
+			<div class="actions">
+			    <%= f.submit %>
+			</div>
+		<% end %> 
+
+
+		<h2>Add existing stop</h2>
+		<br>
+		<%= form_for(@waypoint) do |f| %>
+			<div class="field">
+			    <%= f.label :stop_id %><br>
+			    <%= f.number_field :stop_id %>
+		 	</div>
+			<%= f.hidden_field  :route_id    %>
+			
+			<div class="actions">
+			    <%= f.submit %>
+			</div>
+		<% end %> 
+
+		<%= link_to 'Edit', edit_route_path(@route) %> |
+		<%= link_to 'Back', routes_path %>
+		<br>
+		<br>
+		<br>
+			</div>
 		
 
+	<% end %>
 
 
-
-
-
-
-
-
-
-
-
-
-
-		<%-# comment -%>
-		<% if false %>
-
-			Overall Votes: <%= @route.score %>  
-			Positive Votes: <%= @route.positive_votes %> 
-			Negative Votes: <%= @route.negative_votes %> 
-
-          <%= link_to 'Edit', edit_stop_path(stop) %>
-		  <%= link_to 'Delete Stop', stop, method: :delete, data: { confirm: 'Are you sure?' } %>
-			<p> 
-				Category: 
-				<% stops.categories.each do |category| %>
-					<%= category.name %>
-				<% end %>
-			</p>
-			<p> Stop ID: <%= stops.id %>  </p>
-			<p> Stop name :<%= stops.name %>  </p>
-			<p> Stop description :<%= stops.description %> </p>
-			<p> Stop lat :<%= stops.stop_lat %>  </p>
-			<p> Stop long:<%= stops.stop_long %>  </p>
-		<% end %>
-		<%-# comment -%>
-
-
-
-
-
-
-
-
-<% if current_user.present? and current_user.admin? %>
-
-	<div class="row ">
-	<h2>Create a new stop:</h2><br>
-	<%= form_for(@stop) do |f| %>
-	  <% if @stop.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@stop.errors.count, "error") %> prohibited this stop from being saved:</h2>
-	      <ul>
-	      <% @stop.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  	<% end %>
-	 	<div class="field">
-		    <%= f.label :name %><br>
-		    <%= f.text_field :name %>
-	 	</div>
-		
-		<select name="category" id=" " >
-		  	
-		  	<option value="" disabled selected> Select a Category </option>
-
-		  	<% @categories.each do |category| %>
-		  	<option value="<%= category.id %>"> <%= category.name %> </option>
-			<% end %>
-		</select>
-	 	
-	 	<div class="field">
-		    <%= f.label :description %><br>
-		    <%= f.text_area :description %>
-	 	</div>
-		
-
-		<div class="field">
-		    <%= f.label :stop_image %><br>
-		    <%= f.file_field :stop_image %>
-		</div>
-
-		<div class="field">
-		    <%= f.label :stop_lat %><br>
-		    <%= f.number_field :stop_lat, :class => 'text_field', :step => 'any' %>
-		</div>
-		<div class="field">
-		    <%= f.label :stop_long %><br>
-		    <%= f.number_field :stop_long, :class => 'text_field', :step => 'any' %>
-		</div>
-
-			<%= hidden_field_tag  :route_id,  params[:id]    %>
-		<div class="actions">
-		    <%= f.submit %>
-		</div>
-	<% end %> 
-
-
-	<h2>Add existing stop</h2>
-	<br>
-	<%= form_for(@waypoint) do |f| %>
-		<div class="field">
-		    <%= f.label :stop_id %><br>
-		    <%= f.number_field :stop_id %>
-	 	</div>
-		<%= f.hidden_field  :route_id    %>
-		
-		<div class="actions">
-		    <%= f.submit %>
-		</div>
-	<% end %> 
-
-	<%= link_to 'Edit', edit_route_path(@route) %> |
-	<%= link_to 'Back', routes_path %>
-	<br>
-	<br>
-	<br>
-		</div>
-	
-
-<% end %>
-
+	</div>
 
 </div>
-
+</div>			

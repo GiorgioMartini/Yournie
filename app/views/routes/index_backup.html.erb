@@ -17,18 +17,11 @@
 
                 
                   <a  href=" <%= route_path(route) %> ">
-
-                        <figure>
                           <div class="relative">
-                            <img  src="<%= route.route_image_url(:thumb) %>" >
-                            <figcaption>
-
-
-                            </figcaption>
-                        </div>
-
-                        </figure>
+                          <img  src="<%= route.route_image_url(:thumb) %>" >       
+                   
                             <h3> <%= route.title %></h3>
+                          </div>
                   </a>
                 
                  <div class="route_img_icons column">
