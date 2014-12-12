@@ -81,6 +81,8 @@ class StopsController < ApplicationController
       @stop = Stop.find(params[:id])
     end
 
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def stop_params
       params.require(:stop).permit(:name, :description, :stop_image, :stop_lat, :stop_long)
