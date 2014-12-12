@@ -247,10 +247,7 @@
 			<select name="category" id=" " >
 			  	
 
-			  	<% if false %>
-			  	 <option value="" disabled selected> Select a Category </option>
-					<% end %>
-			  	
+			
 			  	<% @categories.each do |category| %>
 			  	<option value="<%= category.id %>"> <%= category.name %> </option>
 				<% end %>
