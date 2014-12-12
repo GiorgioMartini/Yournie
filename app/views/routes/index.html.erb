@@ -36,6 +36,10 @@
                     <div class="small-4 columns"><%= fa_icon "thumbs-o-up" %><span class="icons-text">Likes</span></div>
                     <div class="small-4 columns"><%= fa_icon "share" %><span class="icons-text">Share</span></div>
                   </div>
+
+                  <%= link_to 'Edit', edit_route_path(route) %>
+                  <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                              <% end %>
                             <p><%= route.description %></p>              
      
                 
@@ -44,7 +48,6 @@
 
                                             <%-# comment -%>
                                               <% if false %> 
-                                              <p><%= route.description %></p>
 
                                                    
                                                 <%= link_to 'Edit', edit_route_path(route) %>
