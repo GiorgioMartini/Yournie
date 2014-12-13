@@ -10,10 +10,11 @@ gem 'rails', '4.1.6'
 
 
 group :development do
-  gem 'sqlite3'
+  gem 'pg'
 
   
 end
+
 group :production do
   gem 'pg'
 #his gem modifies the way Rails works to suit Heroku

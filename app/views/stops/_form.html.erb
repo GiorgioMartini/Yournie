@@ -1,69 +1,60 @@
-<h2>Create a new stop:</h2><br>
-    <%= form_for(@stop) do |f| %>
-      <% if @stop.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@stop.errors.count, "error") %> prohibited this stop from being saved:</h2>
-          <ul>
-          <% @stop.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-        <% end %>
-      <div class="field">
-          <%= f.label :name %><br>
-          <%= f.text_field :name %>
-      </div>
-      
-      <select name="category" id=" " >
-          
-          <option value="" disabled selected> Select a Category </option>
+<%= form_for(@stop) do |f| %>
+  <% if @stop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stop.errors.count, "error") %> prohibited this stop from being saved:</h2>
 
-          <% @categories.each do |category| %>
-          <option value="<%= category.id %>"> <%= category.name %> </option>
-        <% end %>
-      </select>
-      
-      <div class="field">
-          <%= f.label :description %><br>
-          <%= f.text_area :description %>
-      </div>
-      
+      <ul>
+      <% @stop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-      <div class="field">
-          <%= f.label :stop_image %><br>
-          <%= f.file_field :stop_image %>
-      </div>
-
-      <div class="field">
-          <%= f.label :stop_lat %><br>
-          <%= f.number_field :stop_lat, :class => 'text_field', :step => 'any' %>
-      </div>
-      <div class="field">
-          <%= f.label :stop_long %><br>
-          <%= f.number_field :stop_long, :class => 'text_field', :step => 'any' %>
-      </div>
-
-        <%= hidden_field_tag  :route_id,  params[:id]    %>
-      <div class="actions">
-          <%= f.submit %>
-      </div>
-    <% end %> 
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+<div class="field">
+    <%= f.label :stop_image %><br>
+    <%= f.file_field :stop_image %>
+  </div>
 
 
-    <h2>Add existing stop</h2>
-    <br>
-    <%= form_for(@waypoint) do |f| %>
-      <div class="field">
-          <%= f.label :stop_id %><br>
-          <%= f.number_field :stop_id %>
-      </div>
-      <%= f.hidden_field  :route_id    %>
-      
-      <div class="actions">
-          <%= f.submit %>
-      </div>
-    <% end %> 
 
-    <%= link_to 'Edit', edit_route_path(@route) %> |
-    <%= link_to 'Back', routes_path %>
+
+
+
+<select name="category" id=" " >
+        
+        <option value="" disabled selected> Select a Category </option>
+
+        <% @categories.each do |category| %>
+        <option value="<%= category.id %>"> <%= category.name %> </option>
+      <% end %>
+    </select>
+
+
+
+
+  
+
+
+  
+    <div class="field">
+        <%= f.label :stop_lat %><br>
+        <%= f.number_field :stop_lat %>
+    </div>
+        <div class="field">
+        <%= f.label :stop_long %><br>
+        <%= f.number_field :stop_long %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %> 
