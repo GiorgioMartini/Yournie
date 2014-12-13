@@ -26,8 +26,8 @@ gem 'fog'
 gem 'figaro'
 
 gem "font-awesome-rails"
-
-
+gem 'unicorn'
+gem 'rack-timeout'
 
 
 
