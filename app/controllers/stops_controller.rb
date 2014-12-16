@@ -34,7 +34,9 @@ class StopsController < ApplicationController
 
     
     respond_to do |format|
-      if @stop.save
+     # if @stop.save
+     @stop.save
+     if true
         Waypoint.create(route_id: params[:route_id] , stop_id: @stop.id)
         #print out category id or name here
         category = params[:category]
@@ -43,7 +45,7 @@ class StopsController < ApplicationController
         format.html { redirect_to @stop, notice: 'Stop was successfully created.' }
         format.json { render :show, status: :created, location:@stop }
       else
-        
+
         format.html { render :new }
         format.json { render json: @stop.errors, status: :unprocessable_entity }
       end
