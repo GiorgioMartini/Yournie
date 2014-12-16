@@ -1,6 +1,5 @@
 class Stop < ActiveRecord::Base
   validates :description, length: { maximum: 140 }
-  validates :categories, presence: false, on: :create
   #Image Uploader
   mount_uploader  :stop_image, StopImageUploader
   
