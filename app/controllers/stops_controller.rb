@@ -35,7 +35,7 @@ class StopsController < ApplicationController
     
     respond_to do |format|
      # if @stop.save
-     @stop.save
+     @stop.save!(validate: false)
      if true
         Waypoint.create(route_id: params[:route_id] , stop_id: @stop.id)
         #print out category id or name here
