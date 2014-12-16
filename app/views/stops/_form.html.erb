@@ -33,7 +33,7 @@
         
         <option value="" disabled selected> Select a Category </option>
 
-        <% @categories.each do |category| %>
+        <% Category.all.each do |category| %>
         <option value="<%= category.id %>"> <%= category.name %> </option>
       <% end %>
     </select>

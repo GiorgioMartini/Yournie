@@ -43,6 +43,7 @@ class StopsController < ApplicationController
         format.html { redirect_to @stop, notice: 'Stop was successfully created.' }
         format.json { render :show, status: :created, location:@stop }
       else
+        
         format.html { render :new }
         format.json { render json: @stop.errors, status: :unprocessable_entity }
       end
