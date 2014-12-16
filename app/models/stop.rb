@@ -8,6 +8,8 @@ class Stop < ActiveRecord::Base
   has_many :waypoints
   has_many :routes, through: :waypoints
 
+  #test
+
   # Relationship with categories
   has_many :stop_categories
   has_many :categories, through: :stop_categories 
