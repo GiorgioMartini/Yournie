@@ -632,6 +632,16 @@ padding-right: 1px;
 *=foundation slider
 ***********************
 */
+.orbit-container .orbit-prev, .orbit-container .orbit-next {
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.orbit-container .orbit-prev:hover, .orbit-container .orbit-next:hover {
+background-color: rgba(0, 0, 0, 0.8);
+}
+
+
 
 .touch .orbit-container .orbit-prev,
 .touch .orbit-container .orbit-next {

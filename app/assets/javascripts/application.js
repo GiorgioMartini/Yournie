@@ -24,5 +24,5 @@ $(function(){ $(document).foundation(); });
 $(document).ready(function() {
         setTimeout(function() {
             $("#stops-carousel").click();
-        }, 2000);
+        }, 5000);
     });
