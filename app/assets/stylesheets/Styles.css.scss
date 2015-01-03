@@ -226,7 +226,7 @@ body{
 
 
 	a figure:hover figcaption {
-        opacity: 0.8;
+        opacity: 0.4;
       }
 
 
@@ -248,15 +248,16 @@ body{
 
 
 			img{
-				max-width: 100%;
+				// ANTES ERA MAX-WIDTH !!!
+				width: 100%;
 				display:block;
 				margin: 0 auto;
 				height: auto;
 			}
 
-
       figcaption{
-        background: rgba(0,0,0,0.8);
+// AQUI CHECA TL VEZ ESTA MAL !!!!!!
+        background: rgba(255,100,106,0.8);
         color: white;
         display: table;
         height: 311px;
