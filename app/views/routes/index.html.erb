@@ -37,8 +37,6 @@
                     <div class="small-4 columns"><%= fa_icon "share" %><span class="icons-text">Share</span></div>
                   </div>
 
-                  <%= link_to 'Edit', edit_route_path(route) %>
-                                                <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
                             <p><%= route.description %></p>              
      
                 
@@ -48,9 +46,14 @@
                                             <%-# comment -%>
                                               <% if false %> 
 
+                  <%= link_to 'Edit', edit_route_path(route) %>
+                                                <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
                                                    
                                                 <%= link_to 'Edit', edit_route_path(route) %>
                                                 <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+          <%= link_to 'New Route', new_route_path %>
+          
                                               <% end %>
                                             <%-# comment -%>
 
@@ -60,7 +63,6 @@
         </div>
       <% end %>
     </div>
-          <%= link_to 'New Route', new_route_path %>
 
 
   </div>

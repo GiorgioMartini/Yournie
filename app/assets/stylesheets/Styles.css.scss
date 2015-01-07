@@ -26,6 +26,12 @@ margin-bottom: 2em;
 // border-top:0;
 }
 
+@media #{$small-only} {
+	.tag-wrapper{
+		display: none;
+	}
+}
+
 
 
 .top-bar .toggle-topbar.menu-icon a {
@@ -220,6 +226,11 @@ body{
 	
 // }
 
+
+
+
+
+
 .route_item{
 		border: solid 1px $border-line-col;
 		margin-bottom: 2em;
@@ -277,6 +288,8 @@ body{
         transition-delay: 100ms;
 
 			}
+
+
 		}				
 
 		
@@ -341,6 +354,17 @@ body{
 
 				}
 
+}
+
+@media #{$small-only} {
+	.route_item a{
+		figure{
+			figcaption{
+				height: 680px;
+			}
+		} 
+	} 
+	
 }
 
 
